@@ -1,8 +1,12 @@
 //receber base de dados
 
 export default class ProdutosModel{
-    insereProduto = (idProduto, nomeProduto, valorProduto, fornecedorProduto, tipoProduto) => {
+    insereProduto = (idProduto, nomeProduto, valorProduto, qtdProduto, fornecedorProduto, tipoProduto) => {
         //inserir produto na base de dados CREATE - POST
+    }
+
+    pegaProdutos = () => {
+        //pega lista de todos produtos
     }
 
     pegaProdutoById = (idProduto) => {
@@ -25,4 +29,7 @@ export default class ProdutosModel{
         //delta produto DELETE
     }
 
+    atualizaProduto = () => {
+        //atualiza produto
+    }
 }
