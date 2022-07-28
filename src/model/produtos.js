@@ -26,7 +26,7 @@ export default class ProdutosModel{
     }
 
     deletaProduto = () => {
-        //deleta produto DELETE
+        //deleta produto DELETE método run
     }
 
     atualizaProduto = () => {
