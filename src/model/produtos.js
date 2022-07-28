@@ -26,10 +26,10 @@ export default class ProdutosModel{
     }
 
     deletaProduto = () => {
-        //delta produto DELETE
+        //deleta produto DELETE
     }
 
     atualizaProduto = () => {
-        //atualiza produto
+        //atualiza produto put
     }
 }
