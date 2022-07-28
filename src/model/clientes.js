@@ -9,8 +9,8 @@ export default class ClientesModel{
       bd.telefone.push(telefoneCliente)
   }
 
-  // Pegar todos os Clientes do banco de dados
-  pegaClientes = ()=>{
+  // Pegando todos os Clientes do banco de dados
+  pegaCliente = ()=>{
       return bd.cliente
   }
   // Buscar um Cliente do banco de dados
@@ -25,22 +25,22 @@ export default class ClientesModel{
   }
 
   atualizaCliente = (emailCliente, inserindoDados)=>{
-      const newDb = bd.cliente.map(cliente=>{
-          if(cliente.emailCliente === emailCliente){
-              return {
-                  "id": cliente.id,
-                  "nome" : inserindoDados.nomeCliente || cliente.nomeCliente,
-                  "cpf" :  inserindoDados.cpfCliente  || cliente.cpfCliente,
-                  "telefone" : inserindoDados.telefoneCliente || cliente.telefoneCliente,
-                  "email" : inserindoDados.emailCliente || cliente.emailCliente,
-                  "senha" : inserindoDados.senha || cliente.senha,
-              }
-          }
-          return cliente
-      })
+    const newDb = bd.cliente.map(cliente=>{
+        if(cliente.emailCliente === emailCliente){
+            return {
+                "id": cliente.id,
+                "nome" : inserindoDados.nomeCliente || cliente.nomeCliente,
+                "cpf" :  inserindoDados.cpfCliente  || cliente.cpfCliente,
+                "telefone" : inserindoDados.telefoneCliente || cliente.telefoneCliente,
+                "email" : inserindoDados.emailCliente || cliente.emailCliente,
+                "senha" : inserindoDados.senha || cliente.senha,
+            }
+        }
+        return cliente
+    })
 
-      bd.cliente = newDb
+    bd.cliente = newDb
 
-  }
+}
 
 }
