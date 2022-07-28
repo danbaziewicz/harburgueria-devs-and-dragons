@@ -5,7 +5,7 @@ import ProdutosModel from "../model/produtos.js";
 const produtoController = (app) => {
     //rotas ('/produto')
 
-    //criação da instancia
+    
     const modelProdutos = new ProdutosModel()
     try {
         app.get('/produto', (req, res)=>{
@@ -16,10 +16,10 @@ const produtoController = (app) => {
     
             const todosProdutos = modelProdutos.pegaProdutos
             
-            res.json({
-                "produto" : todosProdutos,
-                "erro" : false
-            })
+            res.json(
+                {"produto" : todosProdutos,
+                "erro" : false}
+            )
         })
     } catch (error) {
         res.json(
