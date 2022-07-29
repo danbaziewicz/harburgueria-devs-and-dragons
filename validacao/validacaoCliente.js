@@ -20,3 +20,14 @@ export const validaEmail = (emailCliente)=>{
 
 }
 
+export const criaUsuario = (nomeCliente, emailCliente, senhaCliente)=>{
+  validaEmail(emailCliente)
+  validaSenha(senhaCliente)
+
+  return{
+      "id": id++,
+      "nome" : nomeCliente,
+      "email" : emailCliente,
+      "senha" : senhaCliente
+  }
+}
