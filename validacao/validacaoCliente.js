@@ -8,3 +8,15 @@ export const validaSenha = (senhaCliente)=>{
     }
 
 }
+
+export const validaEmail = (emailCliente)=>{
+  if(emailCliente){
+      if(!emailCliente.includes("@")){
+          throw new Error("Email inválido, tente novamente")
+      }
+  }else{
+      throw new Error("Insira um email")
+  }
+
+}
+
