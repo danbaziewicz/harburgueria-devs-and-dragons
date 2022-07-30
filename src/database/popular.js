@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
 sqlite3.verbose()
 
-const bd = new sqlite3.Database('devs-and-dragons.db');
+const db = new sqlite3.Database('devs-and-dragons.db');
 
 const PEDIDOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PRODUTOS" (
