@@ -33,7 +33,7 @@ const daoProdutos = {
         const PEGA_PRODUTO_NOME = 'SELECT * FROM PRODUTOS WHERE nome_produto = ?'
 
         return new Promise((resolve, reject)=>{
-            db.get(PEGA_PRODUTO_NOME, nomeProduto, (error, row)=>{
+            db.all(PEGA_PRODUTO_NOME, nomeProduto, (error, row)=>{
                 if(error){
                     reject(error)
                 } else {
@@ -47,7 +47,7 @@ const daoProdutos = {
         const PEGA_PRODUTO_FORNECEDOR = 'SELECT * FROM PRODUTOS WHERE fornecedor_produto = ?'
 
         return new Promise((resolve, reject)=>{
-            db.get(PEGA_PRODUTO_FORNECEDOR, fornecedorProduto, (error, row)=>{
+            db.all(PEGA_PRODUTO_FORNECEDOR, fornecedorProduto, (error, row)=>{
                 if(error){
                     reject(error)
                 } else {
@@ -61,7 +61,7 @@ const daoProdutos = {
         const PEGA_PRODUTO_TIPO = 'SELECT * FROM PRODUTOS WHERE tipo_produto = ?'
 
         return new Promise((resolve, reject)=>{
-            db.get(PEGA_PRODUTO_TIPO, tipoProduto, (error, row)=>{
+            db.all(PEGA_PRODUTO_TIPO, tipoProduto, (error, row)=>{
                 if(error){
                     reject(error)
                 } else {
@@ -71,19 +71,21 @@ const daoProdutos = {
         })
     },
 
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    //verificar erro
     insereProduto : (produto)=>{
         const INSERE_PRODUTO = `
-        INSERT INTO PRODUTOS (id_produto, nome_produto, valor_produto, qtd_produto, fornecedor_produto, tipo_produto)
-        VALUES (?,?,?,?,?,?)
+        INSERT INTO PRODUTOS (nome_produto, valor_produto, qtd_produto, fornecedor_produto, tipo_produto)
+        VALUES (?, ?, ?, ?, ?)
         `
         return new Promise((resolve, reject)=>{
-            db.run(INSERE_PRODUTO,
-                produto.id_produto, produto.nome_produto, produto.valor_produto, produto.qtd_produto, produto.fornecedor_produto, produto.tipo_produto,
+            db.run(INSERE_PRODUTO, produto.nome_produto, produto.valor_produto, produto.qtd_produto, produto.fornecedor_produto, produto.tipo_produto,
                 (error)=>{
-                    if(error)
+                    if(error){
                         reject(error)
-                    else
+                    } else {
                         resolve(produto)
+                    }
                 }
             )
         })
@@ -93,7 +95,7 @@ const daoProdutos = {
         const DELETA_PRODUTO = `DELETE FROM PRODUTOS WHERE id_produto = ?`
 
         return new Promise((resolve, reject)=>{
-            bd.get(DELETA_PRODUTO, id, (error, row)=>{
+            db.get(DELETA_PRODUTO, id, (error, row)=>{
                 if(error){
                     reject(error)
                 } else {
