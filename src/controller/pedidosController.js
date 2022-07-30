@@ -1,6 +1,6 @@
 import Pedidos from "../model/pedidos.js";
 
-const pedidoController = (app) => {
+const pedidosController = (app) => {
 
     app.get('/pedido', async (req, res) => {
         try {
@@ -151,4 +151,4 @@ const pedidoController = (app) => {
         }
     })
 }
-export default pedidoController
+export default pedidosController
