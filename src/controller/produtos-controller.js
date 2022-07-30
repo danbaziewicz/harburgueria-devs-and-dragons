@@ -105,6 +105,11 @@ const produtoController = (app) => {
         const id = req.params.id
         try {
             await produtosModel.deletaProduto(id)
+
+            res.json(
+                {"msg" : `Usuário ${id} deletado com sucesso`,
+                "erro" : false}
+            )
         } catch (error) {
             res.json(
                 {"msg" : error.message,
