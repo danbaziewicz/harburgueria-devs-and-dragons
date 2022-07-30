@@ -106,13 +106,19 @@ const daoProdutos = {
     },
 
     atualizaProduto : (id_produto, novoProduto)=>{
-        const ATUALIZA_PRODUTO = `UPDATE PRODUTOS SET nome_produto = ?, valor_produto = ?, qtd_produto = ?, fornecedor_produto = ?, tipo_produto = ?`
+        const ATUALIZA_PRODUTO = `UPDATE PRODUTOS
+        SET nome_produto = ?,
+        valor_produto = ?, 
+        qtd_produto = ?, 
+        fornecedor_produto = ?, 
+        tipo_produto = ?
+        WHERE id_produto = ?`
          
         return new Promise((resolve, reject)=>{
             db.run(ATUALIZA_PRODUTO, novoProduto.nome_produto, novoProduto.valor_produto, novoProduto.qtd_produto, novoProduto.fornecedor_produto, novoProduto.tipo_produto, id_produto,
                 (error)=>{
                     if(error){
-                      reject(error)
+                        reject(error)
                     } else {
                         resolve (novoProduto)
                     }
