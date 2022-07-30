@@ -1,4 +1,5 @@
 import produtosModel from "../model/produtos.js";
+import { criaProduto } from "../services/valida-produto.js";
 
 const produtoController = (app) => {
     //rotas ('/produto')
@@ -69,7 +70,7 @@ const produtoController = (app) => {
     app.get('/produto/tipo/:tipo', async (req, res)=>{
         const produtoTipo = req.params.tipo
         try {
-            const produto = await produtosModel.pegaProdutoByTipo(produtoTipo)
+            const produto = await produtosModel.pegaProdutoByTipo(produtoTipo) //@@@@@@@@@@@@@@@ LOWER
             res.json({
                 "produtos" : produto,
                 "erro" : false
@@ -82,16 +83,14 @@ const produtoController = (app) => {
         }
     })
 
-    //@@@@@@@@@@@@@@@@@@@@@@@@
-    //verificar erro
-    //dar continuidade ao POST/CREATE
     app.post('/produto', async (req, res)=>{
         const body = req.body
         try {
-            await produtosModel.insereProduto(body.nome_produto, body.valor_produto, body.qtd_produto, body.fornecedor_produto, body.tipo_produto)
+            const novoProduto = criaProduto(body.nome_produto, body.valor_produto, body.qtd_produto, body.fornecedor_produto, body.tipo_produto);
+            await produtosModel.insereProduto(novoProduto)
             res.json({
                 "msg" : "Produto inserido com sucesso",
-                "produto" : "",//variável com o novo produto
+                "produto" : novoProduto,//variável com o novo produto
                 "erro" : false
             })
         } catch (erro) {
