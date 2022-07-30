@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS "PRODUTOS" (
 const ADD_PRODUTOS_DATA = `
 INSERT INTO PRODUTOS (id_produto, nome_produto, valor_produto, qtd_produto, fornecedor_produto, tipo_produto)
 VALUES
-    (1, 'Coca-Cola lata 350ml', 4.00, 5, 'Distribuidora do Zeca', 'Refrigerante'),
-    (2, 'Sprite lata 350ml', 4.00, 5, 'Distribuidora do Zeca', 'Refrigerante'),
+    (1, 'Coca-Cola lata 350ml', 4.00, 5, 'Distribuidora do Zeca', 'refrigerante'),
+    (2, 'Sprite lata 350ml', 4.00, 5, 'Distribuidora do Zeca', 'refrigerante'),
     (3, 'Hamburguer de Costela', 23.00, 10, 'Devs and Dragons', 'hamburguer'),
     (4, 'Hamburguer Vegano', 27.00, 15, 'Devs and Dragons', 'hamburguer'),
     (5, 'Vinho Dv Catena Malbec', 230.00, 13, 'Imports S.A.', 'vinhos'),
