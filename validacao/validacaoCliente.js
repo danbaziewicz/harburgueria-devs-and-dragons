@@ -20,7 +20,7 @@ export const validaEmail = (emailCliente)=>{
 
 }
 
-export const criaUsuario = (nomeCliente, emailCliente, senhaCliente)=>{
+export const criaClientes = (nomeCliente, emailCliente, senhaCliente)=>{
   validaEmail(emailCliente)
   validaSenha(senhaCliente)
 
