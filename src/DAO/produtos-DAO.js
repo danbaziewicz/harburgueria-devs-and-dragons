@@ -1,5 +1,4 @@
-//IMPORTAR DB
-const db = [];
+import db from "../database/conect.js"
 
 const daoProdutos = {
     
@@ -104,7 +103,7 @@ const daoProdutos = {
         })
     },
 
-    atualizaProduto : (id, novoProduto)=>{
+    atualizaProduto : (id_produto, novoProduto)=>{
         const ATUALIZA_PRODUTO = `UPDATE PRODUTOS SET nome_produto = ?, valor_produto = ?, qtd_produto = ?, fornecedor_produto = ?, tipo_produto = ?`
          
         return new Promise((resolve, reject)=>{
