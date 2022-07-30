@@ -1,6 +1,7 @@
 //IMPORTAR DB
 const db = [];
-const dao = {
+
+const daoProdutos = {
     
     pegaTodosProdutos : () =>{
         const PEGA_PRODUTOS = 'SELECT * FROM PRODUTOS'
@@ -71,8 +72,52 @@ const dao = {
         })
     },
 
-    
+    insereProduto : (produto)=>{
+        const INSERE_PRODUTO = `
+        INSERT INTO PRODUTOS (id_produto, nome_produto, valor_produto, qtd_produto, fornecedor_produto, tipo_produto)
+        VALUES (?,?,?,?,?,?)
+        `
+        return new Promise((resolve, reject)=>{
+            db.run(INSERE_PRODUTO,
+                produto.id_produto, produto.nome_produto, produto.valor_produto, produto.qtd_produto, produto.fornecedor_produto, produto.tipo_produto,
+                (error)=>{
+                    if(error)
+                        reject(error)
+                    else
+                        resolve(produto)
+                }
+            )
+        })
+    },
 
+    deletaProduto : (id)=>{
+        const DELETA_PRODUTO = `DELETE FROM PRODUTOS WHERE id_produto = ?`
 
+        return new Promise((resolve, reject)=>{
+            bd.get(DELETA_PRODUTO, id, (error, row)=>{
+                if(error){
+                    reject(error)
+                } else {
+                    resolve (row)
+                }
+            })
+        })
+    },
 
+    atualizaProduto : (id, novoProduto)=>{
+        const ATUALIZA_PRODUTO = `UPDATE PRODUTOS SET nome_produto = ?, valor_produto = ?, qtd_produto = ?, fornecedor_produto = ?, tipo_produto = ?`
+         
+        return new Promise((resolve, reject)=>{
+            db.run(ATUALIZA_PRODUTO, novoProduto.nome_produto, novoProduto.valor_produto, novoProduto.qtd_produto, novoProduto.fornecedor_produto, novoProduto.tipo_produto, id_produto,
+                (error)=>{
+                    if(error){
+                      reject(error)
+                    } else {
+                        resolve (novoProduto)
+                    }
+                })
+        })
+    }
 }
+
+export default daoProdutos
