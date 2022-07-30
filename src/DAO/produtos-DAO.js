@@ -89,8 +89,6 @@ const daoProdutos = {
         })
     },
     
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    //verificar problema de execução.
     deletaProduto : (id)=>{
         const DELETA_PRODUTO = `DELETE FROM PRODUTOS WHERE id_produto = ?`
 
