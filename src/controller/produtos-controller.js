@@ -90,7 +90,7 @@ const produtoController = (app) => {
             await produtosModel.insereProduto(novoProduto)
             res.json({
                 "msg" : "Produto inserido com sucesso",
-                "produto" : novoProduto,//variável com o novo produto
+                "produto" : novoProduto,
                 "erro" : false
             })
         } catch (erro) {
@@ -113,17 +113,16 @@ const produtoController = (app) => {
         }
     })
     
-    //@@@@@@@@@@@@@@@@@@@@@@@@
-    //dar continuidade ao PUT/UPDATE
     app.put('/produto/id/:id', async (req, res)=>{
-        const body = res.body
+        const body = req.body
         const id = req.params.id
         try {
-            //criar validação de dados
-            await produtosModel.atualizaProduto(id, body.nome, body.valor, body.qtd, body.fornecedor, body.tipo)
+            const novoProduto = criaProduto(body.nome_produto, body.valor_produto, body.qtd_produto, body.fornecedor_produto, body.tipo_produto);
+            console.log(novoProduto)
+            await produtosModel.atualizaProduto(id, novoProduto)
             res.json({
                 "msg" : "Produto atualizado com sucesso",
-                "produto" : "",//variável com o novo produto
+                "produto" : novoProduto,
                 "erro" : false
             })
         } catch (error) {
