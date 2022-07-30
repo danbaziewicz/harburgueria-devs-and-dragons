@@ -71,8 +71,6 @@ const daoProdutos = {
         })
     },
 
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    //verificar erro
     insereProduto : (produto)=>{
         const INSERE_PRODUTO = `
         INSERT INTO PRODUTOS (nome_produto, valor_produto, qtd_produto, fornecedor_produto, tipo_produto)
@@ -90,7 +88,9 @@ const daoProdutos = {
             )
         })
     },
-
+    
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    //verificar problema de execução.
     deletaProduto : (id)=>{
         const DELETA_PRODUTO = `DELETE FROM PRODUTOS WHERE id_produto = ?`
 
@@ -99,7 +99,7 @@ const daoProdutos = {
                 if(error){
                     reject(error)
                 } else {
-                    resolve (row)
+                    resolve (`Produto ${id} deletado com sucesso`)
                 }
             })
         })
