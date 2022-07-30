@@ -83,3 +83,5 @@ const funcionariosDao = {
     }
     
 }
+
+export default funcionariosDao
