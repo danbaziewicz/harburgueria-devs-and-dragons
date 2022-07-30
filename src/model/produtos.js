@@ -30,13 +30,10 @@ const produtosModel = {
         return await daoProdutos.deletaProduto(idProduto)
     },
 
-    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    //verificar funcionalidade
     atualizaProduto : async (idProduto, novosDados) => {
         const produtoAtual = await produtosModel.pegaProdutoById(idProduto)
         if(produtoAtual){
             const produtoAtualizado = {
-                //nome_produto = ?, valor_produto = ?, qtd_produto = ?, fornecedor_produto = ?, tipo_produto = ?
                 "nome_produto" : novosDados.nome_produto || produtoAtual.nome_produto,
                 "valor_produto" : novosDados.valor_produto || produtoAtual.valor_produto,
                 "qtd_produto" : novosDados.qtd_produto || produtoAtual.qtd_produto,
