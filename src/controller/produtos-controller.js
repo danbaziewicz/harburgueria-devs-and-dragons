@@ -2,7 +2,6 @@ import produtosModel from "../model/produtos.js";
 import { criaProduto } from "../services/valida-produto.js";
 
 const produtoController = (app) => {
-    //rotas ('/produto')
 
     app.get('/produto', async (req, res)=>{
         try {

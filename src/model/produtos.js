@@ -2,7 +2,6 @@ import daoProdutos from "../DAO/produtos-DAO.js"
 
 const produtosModel = {
     insereProduto : async (produto) => {
-        //inserir produto na base de dados CREATE - POST
         return await daoProdutos.insereProduto(produto)
     },
 
