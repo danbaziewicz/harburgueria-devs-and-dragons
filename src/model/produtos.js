@@ -1,35 +1,53 @@
-//receber base de dados
+import daoProdutos from "../DAO/produtos-DAO.js"
 
-export default class ProdutosModel{
-    insereProduto = (idProduto, nomeProduto, valorProduto, qtdProduto, fornecedorProduto, tipoProduto) => {
+const produtosModel = {
+    insereProduto : async (produto) => {
         //inserir produto na base de dados CREATE - POST
-    }
+        return await daoProdutos.insereProduto(produto)
+    },
 
-    pegaProdutos = () => {
-        //pega lista de todos produtos
-    }
+    pegaProdutos : async () => {
+        return await daoProdutos.pegaTodosProdutos()
+    },
 
-    pegaProdutoById = (idProduto) => {
-        //busca produto pela ID - READ - GET
-    }
+    pegaProdutoById : async (idProduto) => {
+        return await daoProdutos.pegaProdutoById(idProduto)
+    },
 
-    pegaProdutoByNome = (nomeProduto) => {
-        //busca produto pelo nome - READ - GET
-    }
+    pegaProdutoByNome : async (nomeProduto) => {
+        return await daoProdutos.pegaProdutoByNome(nomeProduto)
+    },
 
-    pegaProdutoByFornecedor = (fornecedorProduto) => {
-        //busca produto pelo fornecedor - READ - GET
-    }
+    pegaProdutoByFornecedor : async (fornecedorProduto) => {
+        return await daoProdutos.pegaProdutoByFornecedor(fornecedorProduto)
+    },
 
-    pegaProdutoByTipo = (tipoProduto) => {
-        //busca produto pelo tipo - READ - GET
-    }
+    pegaProdutoByTipo : async (tipoProduto) => {
+        return await daoProdutos.pegaProdutoByTipo(tipoProduto)
+    },
 
-    deletaProduto = () => {
-        //deleta produto DELETE método run
-    }
+    deletaProduto : async (idProduto) => {
+        return await daoProdutos.deletaProduto(idProduto)
+    },
 
-    atualizaProduto = () => {
-        //atualiza produto put
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    //verificar funcionalidade
+    atualizaProduto : async (idProduto, novosDados) => {
+        const produtoAtual = await produtosModel.pegaProdutoById(idProduto)
+        if(produtoAtual){
+            const produtoAtualizado = {
+                //nome_produto = ?, valor_produto = ?, qtd_produto = ?, fornecedor_produto = ?, tipo_produto = ?
+                "nome_produto" : novosDados.nome_produto || produtoAtual.nome_produto,
+                "valor_produto" : novosDados.valor_produto || produtoAtual.valor_produto,
+                "qtd_produto" : novosDados.qtd_produto || produtoAtual.qtd_produto,
+                "fornecedor_produto" : novosDados.fornecedor_produto || produtoAtual.fornecedor_produto,
+                "tipo_produto" : novosDados.tipo_produto || produtoAtual.tipo_produto
+            }
+            return await daoProdutos.atualizaProduto(idProduto, produtoAtualizado)
+        } else {
+            throw new Error("Produto não encontrado")
+        }
     }
 }
+
+export default produtosModel
