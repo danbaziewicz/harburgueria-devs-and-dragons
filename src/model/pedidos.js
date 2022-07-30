@@ -10,5 +10,7 @@ export default class Pedidos {
 
     }
 
-    pegaPedidos = (pedido) => {}
+    pegaPedidos = (pedido) => {
+
+    }
 }
