@@ -1,10 +1,10 @@
 import sqlite3 from "sqlite3";
 sqlite3.verbose()
 
-const db = new sqlite3.Database('devs-and-dragons.db');
+const db = new sqlite3.Database('bancoDados.db');
 
 const PEDIDOS_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "PRODUTOS" (
+CREATE TABLE IF NOT EXISTS "PEDIDOS" (
     "id_pedido" INTEGER PRIMARY KEY AUTOINCREMENT,
     "data_do_pedido" VARCHAR(32),
     "hora_do_pedido" VARCHAR(32),
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS "PRODUTOS" (
 );`;
 
 const ADD_PEDIDOS_DATA = `
-INSERT INTO PRODUTOS (id_pedido, data_do_pedido, hora_do_pedido, valor_final, forma_de_pagamento)
+INSERT INTO PEDIDOS (id_pedido, data_do_pedido, hora_do_pedido, valor_final, forma_de_pagamento)
 VALUES
     (1, "2022-07-01", "12:30:17", "R$ 30.00", "PIX"),
     (2, "2022-07-01", "12:34:15", "R$ 15.00", "DINHEIRO"),

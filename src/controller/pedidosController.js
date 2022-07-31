@@ -102,7 +102,7 @@ const pedidosController = (app) => {
         const body = req.body
         try {
             const novoPedido = criaPedido(body.data_do_pedido, body.hora_do_pedido, body.valor_final, body.forma_de_pagamento);
-            await Pedidos.inserePedido(pedido)
+            await Pedidos.inserePedido(novoPedido)
             res.json({
                 "msg": "Pedido criado !",
                 "pedidos": novoPedido,
@@ -133,7 +133,7 @@ const pedidosController = (app) => {
         }
     })
 
-    app.put('/produto/id/:id', async (req, res) => {
+    app.put('/pedido/id/:id', async (req, res) => {
         const body = req.body
         const id = req.params.id
         try {
@@ -142,7 +142,7 @@ const pedidosController = (app) => {
             await Pedidos.atualizaPedido(id, novoPedido)
             res.json({
                 "msg": "Pedido atualizado com sucesso",
-                "pedido": novoPedido,
+                "pedidos": novoPedido,
                 "erro": false
             })
         } catch (error) {

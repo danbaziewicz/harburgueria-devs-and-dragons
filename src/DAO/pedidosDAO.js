@@ -101,7 +101,7 @@ const daoPedidos = {
     },
 
     deletarPedido: (id) => {
-        const DELETA_PEDIDO = `DELETE FROM PRODUTOS WHERE id_pedido = ?`
+        const DELETA_PEDIDO = `DELETE FROM PEDIDOS WHERE id_pedido = ?`
 
         return new Promise((resolve, reject) => {
             db.get(DELETA_PEDIDO, id, (error, row) => {
@@ -115,7 +115,7 @@ const daoPedidos = {
     },
 
     atualizaPedido: (id_pedido, novoPedido) => {
-        const ATUALIZA_PEDIDO = `UPDATE PEDIDOS SET data_do_pedido = ?, hora_do_pedido = ?, valor_final = ?, forma_de_pagamento = ?`
+        const ATUALIZA_PEDIDO = `UPDATE PEDIDOS SET data_do_pedido = ?, hora_do_pedido = ?, valor_final = ?, forma_de_pagamento = ? WHERE id_pedido = ?`
 
         return new Promise((resolve, reject) => {
             db.run(ATUALIZA_PEDIDO, novoPedido.data_do_pedido, novoPedido.hora_do_pedido, novoPedido.valor_final, novoPedido.forma_de_pagamento, id_pedido,

@@ -34,8 +34,8 @@ const Pedidos = {
     },
 
     atualizaPedido: async (id_pedido, novoPedido) => {
-        const pedido = await Pedidos.pedidoPeloId(pedidoId)
-        if (produtoAtual) {
+        const pedidoAtual = await Pedidos.pedidoPeloId(id_pedido)
+        if (pedidoAtual) {
             const pedidoAtualizado = {
                 "data_do_pedido": novoPedido.data_do_pedido || pedido.data_do_pedido,
                 "hora_do_pedido": novoPedido.hora_do_pedido || pedido.hora_do_pedido,
