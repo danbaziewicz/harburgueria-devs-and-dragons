@@ -1,5 +1,7 @@
 import Pedidos from "../model/pedidos.js";
-
+import {
+    criaPedido
+} from "../services/validacoes.js";
 const pedidosController = (app) => {
 
     app.get('/pedido', async (req, res) => {
@@ -99,7 +101,7 @@ const pedidosController = (app) => {
     app.post('/pedido', async (req, res) => {
         const body = req.body
         try {
-            const novoPedido = criarPedido(body.data_do_pedido, body.hora_do_pedido, body.valor_final, body.forma_de_pagamento);
+            const novoPedido = criaPedido(body.data_do_pedido, body.hora_do_pedido, body.valor_final, body.forma_de_pagamento);
             await Pedidos.inserePedido(pedido)
             res.json({
                 "msg": "Pedido criado !",
@@ -135,7 +137,7 @@ const pedidosController = (app) => {
         const body = req.body
         const id = req.params.id
         try {
-            const novoPedido = criarPedido(body.data_do_pedido, body.hora_do_pedido, body.valor_final, body.forma_de_pagamento);
+            const novoPedido = criaPedido(body.data_do_pedido, body.hora_do_pedido, body.valor_final, body.forma_de_pagamento);
             console.log(novoPedido)
             await Pedidos.atualizaPedido(id, novoPedido)
             res.json({
