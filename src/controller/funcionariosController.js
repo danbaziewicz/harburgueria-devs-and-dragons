@@ -1,11 +1,11 @@
-import funcionarios from '../model/funcionarios.js'
-import validacaoFuncionarios from '../services/validacaoFuncionarios.js'
+import funcionariosModel from '../model/funcionarios.js'
+import {criaFuncionarios} from '../services/validacaoFuncionarios.js' 
 
 
 const funcionariosController = (app) => {
     app.get('/funcionarios', async (req, res) => {
         try {
-            const todosFuncionarios = await funcionarios.mostrafuncionarios()
+            const todosFuncionarios = await funcionariosModel.mostrafuncionarios()
             res.json({
                 "Funcionarios": todosFuncionarios,
                 "erro": false        
@@ -22,7 +22,7 @@ const funcionariosController = (app) => {
     app.get('/funcionarios/id/:id', async (req, res) => {
         const idFuncionarios = req.params.id
         try {
-            const funcionario = await funcionarios.mostraUmFuncionario(idFuncionarios)
+            const funcionario = await funcionariosModel.mostraUmFuncionario(idFuncionarios)
             res.json({
                 "Funcionario" : funcionario,
                 "erro" : false
@@ -39,14 +39,16 @@ const funcionariosController = (app) => {
     app.post('/funcionarios', async (req, res) => {
         const body = req.body
         try {
-            const funcionarioNovo = await funcionarios.insereFuncionarios(funcionarioNovo)
+            const funcionarioNovo = criaFuncionarios(body.nome, body.cpf, body.email, body.telefone, body.cargo, body.dataDeAdmissao, body.salario);
+            await funcionariosModel.insereFuncionarios(funcionarioNovo)
             res.json({
+                "msg": "Funcionário cadastrado com sucesso",
                 "Funcionarios" : funcionarioNovo,
                 "erro" : false
             })
         } catch (erro) {
             res.json({
-                "erro" : erro.message,
+                "msg" : erro.message,
                 "erro" : true
             })
         }
@@ -56,15 +58,17 @@ const funcionariosController = (app) => {
         const body = req.body
         const id = req.params.id
         try {
-            const novosFuncionario = (body.nome, body.cpf, body.email, body. telefone, body.cargo, body.dataDeAdmissao, body.salario)
-            const funcionarioNovo = await funcionarios.atualizaFuncionarios(id, novosFuncionario) 
+            const novosFuncionario = criaFuncionarios(body.nome, body.cpf, body.email, body.telefone, body.cargo, body.dataDeAdmissao, body.salario)
+            console.log(novosFuncionario)
+            await funcionariosModel.atualizaFuncionarios(id, novosFuncionario) 
             res.json({
-                "Funcionario" : 'Funcionario atualizado com sucesso',
+                "msg": `Funcionario ${id} atualizado com sucesso`,
+                "Funcionario" : novosFuncionario,
                 "erro" : false
             })
         } catch (erro) {
             res.json({
-                "erro" : erro.message,
+                "msg" : erro.message,
                 "erro" : true
             })
         }
@@ -73,14 +77,14 @@ const funcionariosController = (app) => {
     app.delete('/funcionarios/id/:id', async (req,res) => {
         const id = req.params.id
         try {
-            await funcionarios.deletaFuncionarios(id)
+            await funcionariosModel.deletaFuncionarios(id)
             res.json({
-                "Msg" : 'Funcionario deletado com sucesso',
+                "Msg" : `Funcionario ${id} deletado com sucesso`,
                 "erro" : false
             })
-        } catch (erro) {
+        } catch (error) {
             res.json({
-                "erro" : erro.message,
+                "msg" : error.message,
                 "erro" : true
             })
         }
@@ -90,4 +94,3 @@ const funcionariosController = (app) => {
 
 
 export default funcionariosController
-
