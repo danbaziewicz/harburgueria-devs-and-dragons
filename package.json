@@ -4,6 +4,8 @@
   "description": "Projeto Final de Módulo 4",
   "main": "index.js",
   "scripts": {
+    "dev":"nodemon ./src/server-cliente.js",
+    "start": "node ./src/app-cliente.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/danbaziewicz/harburgueria-devs-and-dragons/issues"
   },
-  "homepage": "https://github.com/danbaziewicz/harburgueria-devs-and-dragons#readme"
+  "homepage": "https://github.com/danbaziewicz/harburgueria-devs-and-dragons#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "sqlite3": "^5.0.10"
+  },
+  "type": "module"
 }
