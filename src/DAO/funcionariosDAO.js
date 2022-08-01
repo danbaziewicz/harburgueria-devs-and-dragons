@@ -1,9 +1,11 @@
 import db from '../database/db-sqlite.js'
 
 const funcionariosDao = {
+
     mostraTodosFuncionarios : () => {
+        const MOSTRA_FUNCIONARIOS = 'SELECT * FROM FUNCIONARIOS'
         return new Promise((resolve, reject) => {
-            db.all('SELECT * FROM FUNCIONARIOS', (erro, rows) => {
+            db.all(MOSTRA_FUNCIONARIOS, (erro, rows) => {
                 if(erro) {
                     reject(erro)
                 }else {
@@ -14,8 +16,9 @@ const funcionariosDao = {
     },
 
     mostraUmFuncionario : (id) => {
+        const MOSTRA_CLIENTE_ID = 'SELECT * FROM FUNCIONARIOS WHERE id = ?'
         return new Promise((resolve, reject) => {
-            db.get('SELECT * FROM FUNCIONARIOS WHERE id = ?', id, (erro, dados) => {
+            db.get(MOSTRA_CLIENTE_ID, id, (erro, dados) => {
                 if(erro) {
                     reject(erro)
                 }else {
@@ -26,9 +29,10 @@ const funcionariosDao = {
     },
     
     insereFuncionarios : (funcionarios) => {
+        const INSERE_FUNCIONARIOS = `INSERT INTO FUNCIONARIOS (nome, cpf, email, telefone, cargo, dataDeAdmissao, salario)
+        VALUES(?, ?, ?, ?, ?, ?, ?)`
         return new Promise((resolve, reject) => {
-            db.run(`INSERT INTO FUNCIONARIOS (nome, cpf, email, telefone, cargo, dataDeAdmissao, salario)
-            VALUES(?, ?, ?, ?, ?, ?, ?)`, 
+            db.run(INSERE_FUNCIONARIOS, 
                 funcionarios.nome,
                 funcionarios.cpf,
                 funcionarios.email,
@@ -41,54 +45,30 @@ const funcionariosDao = {
                 if(erro) {
                         reject(erro)
                     }else {
-                        resolve('Funcionario inserido com sucesso.')
+                        resolve(funcionarios)
                     }
                 })
         })
     },
     
     atualizaFuncionarios : (id, novosDados) => {
-        const query = (novosDados) => {
-            let nome = ''
-            let cpf = ''
-            let email = ''
-            let telefone = ''
-            let cargo = ''
-            let dataDeAdmissao = ''
-            let salario = ''
-            if(novosDados.nome) {
-                nome = `nome = ?`
-            }
-            if(novosDados.cpf) {
-                cpf = `cpf = ?`
-            }
-            if(novosDados.email) {
-                email = `email = ?`
-            }
-            if(novosDados.telefone) {
-                telefone = `telefone = ?`
-            }
-            if(novosDados.cargo) {
-                cargo = `cargo = ?`
-            }
-            if(novosDados.dataDeAdmissao) {
-                dataDeAdmissao = `dataDeAdmissao = ?`
-            }
-            if(novosDados.salario) {
-                salario = `salario = ?`
-            }
-
-            return `UPDATE FUNCIONARIOS SET ${nome} ${cpf} ${email} ${telefone} ${cargo} ${dataDeAdmissao} ${salario}
-            WHERE id = ?`
-        }
+        const ATUALIZA_FUNCIONARIO = `UPDATE FUNCIONARIOS SET
+        nome = ?,
+        cpf = ?,
+        email = ?,
+        telefone = ?,
+        cargo = ?,
+        dataDeAdmissao = ?,
+        salario = ?
+        WHERE id = ?`
 
         return new Promise((resolve, reject) => {
-            db.run(query(novosDados), ...Object.values(novosDados),id,
+            db.run(ATUALIZA_FUNCIONARIO, novosDados.nome, novosDados.cpf, novosDados.email, novosDados.telefone, novosDados.cargo, novosDados.dataDeAdmissao, novosDados.salario, id,
             (erro) => {
                 if(erro) {
                     reject(erro)
                 }else {
-                    resolve(`Usuario com id ${id} atualizado com sucesso`)
+                    resolve(novosDados)
                 }
             })
         })
@@ -96,8 +76,9 @@ const funcionariosDao = {
     
     
     deletaFuncionarios : (id) => {
+        const DELETA_FUNCIONARIO = `DELETE FROM FUNCIONARIOS WHERE id = ?`
         return new Promise((resolve, reject) => {
-            db.run(`DELETE FROM FUNCIONARIOS WHERE id = ?`, id, (erro) => {
+            db.run(DELETA_FUNCIONARIO, id, (erro) => {
                 if(erro) {
                     reject(erro)
                 }else {
