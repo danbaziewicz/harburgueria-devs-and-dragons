@@ -1,4 +1,4 @@
-const validaCpf = (cpf) => {
+export const validaCpf = (cpf) => {
     if(cpf) {
         if(cpf.length === 11) {
             return cpf
@@ -8,7 +8,7 @@ const validaCpf = (cpf) => {
     }
 }
 
-const validaEmail = (email) => {
+export const validaEmail = (email) => {
     if(email) {
         if(email.includes('@')) {
             return email
@@ -20,7 +20,7 @@ const validaEmail = (email) => {
     }
 }
 
-const validaTelefone = (telefone) => {
+export const validaTelefone = (telefone) => {
     if(telefone) {
         if(telefone.length === 9) {
             return telefone
@@ -32,5 +32,18 @@ const validaTelefone = (telefone) => {
     }
 }
 
+export const criaFuncionarios = (nome, cpf, email, telefone, cargo, dataDeAdmissao, salario)=>{
+    validaEmail(email)
+    validaCpf(cpf)
+    validaTelefone(telefone)
 
-export default {validaCpf, validaEmail, validaTelefone}
+    return{
+        "nome": nome,
+        "cpf": cpf,
+        "email": email,
+        "telefone": telefone,
+        "cargo": cargo,
+        "dataDeAdmissao": dataDeAdmissao,
+        "salario": salario
+    }
+}
