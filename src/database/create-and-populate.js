@@ -1,19 +1,19 @@
-
-import sqlite3 from 'sqlite3'
+import sqlite3 from 'sqlite3';
 sqlite3.verbose()
+
 const db = new sqlite3.Database('database.db');
 
 const FUNCIONARIOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "nome" varchar(64),
-    "cpf" integer,
-    "email" text,
+    "cpf" varchar(64),
+    "email" varchar(64),
     "telefone" integer,
-    "cargo" text,
-    "dataDeAdmissao" text,
+    "cargo" varchar(64),
+    "dataDeAdmissao" varchar(64),
     "salario" integer
-  );`;
+);`;
 
 const ADD_FUNCIONARIOS_DATA = `
 INSERT INTO FUNCIONARIOS (id, nome, cpf, email, telefone, cargo, dataDeAdmissao, salario)
@@ -33,19 +33,22 @@ VALUES
 
 function criaTabelaFuncionario() {
     db.run(FUNCIONARIOS_SCHEMA, (error) => {
-        if (error) console.log(`Erro ao criar tabela de funcionarios${error}`);
-    });
+        if (error) {
+            console.log(`Erro ao criar tabela de funcionarios${error}`)
+        }
+    })
 }
 
 
 function populaTabelaFuncionarios() {
     db.run(ADD_FUNCIONARIOS_DATA, (error) => {
-        if (error) console.log(`Erro ao popular tabela de funcionarios${error}`);
-    });
+        if (error) {console.log(`Erro ao popular tabela de funcionarios${error}`)
+        }
+    })
 }
 
 
 db.serialize( () => {
     criaTabelaFuncionario()
     populaTabelaFuncionarios()
-});
+})
