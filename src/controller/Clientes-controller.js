@@ -158,7 +158,7 @@ const clienteController = (app) => {
             await clientesModel.atualizaCliente(idCliente, newCliente)
             res.json({
                 "msg" : "Cliente atualizado com sucesso",
-                "produto" : newCliente,
+                "cliente" : newCliente,
                 "erro" : false
             })
         } catch (error) {
