@@ -1,38 +1,57 @@
-let id = 0
-class ClientesModel {
-    constructor(id, nomeCliente, cpfCliente, emailCliente, senhaCliente, telefoneCliente) {
-        this.id = id,
-        this.nomeCliente = nomeCliente,
-        this.cpfCliente = cpfCliente,
-        this.emailCliente = emailCliente ? this.validaEmail(emailCliente) : undefined
-        this.telefoneCliente = telefoneCliente,
-        this.senhaCliente = senhaCliente ? this.validaSenha(senhaCliente) : undefined
-    }
+import daoClientes from "../DAO/clientes-DAO.js"
 
-    insereCliente = (cliente) => {
-        bd.cliente.push(cliente)
+const clientesModel = {
+    insereCliente : async (cliente) => {
+        return await daoClientes.insereCliente(cliente)
+    },
 
-    }
+    pegaCliente : async () => {
+        return await daoClientes.pegaTodosClientes()
+    },
 
+    pegaClienteId : async (idCliente) => {
+        return await daoClientes.pegaClienteId(idCliente)
+    },
 
-    pegaCliente = () => {
-        return bd.cliente
+    pegaClienteNome : async (nomeCliente) => {
+        return await daoClientes.pegaClienteNome(nomeCliente)
+    },
 
-    }
+    pegaClienteEmail : async (clienteEmail) => {
+        return await daoClientes.pegaClienteEmail(clienteEmail)
+    },
 
+    pegaClienteCpf : async (clienteCpf) => {
+      return await daoClientes.pegaClienteCpf(clienteCpf)
+    },
 
-    pegaUmCliente = (emailCliente) => {
-        return bd.cliente.filter(e => e.emailCliente === emailCliente)
+    pegaClienteTelefone : async (clienteTelefone) => {
+      return await daoClientes.pegaClienteTelefone(clienteTelefone)
+    },
 
-    }
+    pegaClienteSenha : async (clienteSenha) => {
+        return await daoClientes.pegaClienteSenha(clienteSenha)
+    },
 
+    deletaCliente : async (idCliente) => {
+        return await daoClientes.deletaCliente(idCliente)
+    },
 
-    dellCliente = (id) => {
-
-    }
-
-
-    atualizaCliente = () => {
-
+    atualizaCliente : async (idCliente, newDados) => {
+        const ClientePresente = await clientesModel.pegaClienteId(idCliente)
+        if(ClientePresente){
+            const clienteAtualizado = {
+                "id_cliente" : newDados.id_cliente || ClientePresente.id_cliente,
+                "nome_cliente" : newDados.nome_cliente || ClientePresente.nome_cliente,
+                "email_cliente" : newDados.email_cliente || ClientePresente.email_cliente,
+                "cpf_cliente" : newDados.cpf_cliente || ClientePresente.cpf_cliente,
+                "telefone_cliente" : newDados.telefone_cliente || ClientePresente.telefone_cliente,
+                "senha_cliente" : newDados.senha_cliente || ClientePresente.senha_cliente
+            }
+            return await daoClientes.atualizaCliente(idCliente, clienteAtualizado)
+        } else {
+            throw new Error("Cliente não encontrado!!")
+        }
     }
 }
+export default clientesModel
