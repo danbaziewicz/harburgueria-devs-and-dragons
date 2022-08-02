@@ -1,4 +1,4 @@
-import clientesModel from "../model/clientes-model";
+import clientesModel from "../model/clientes-model.js";
 import { criaClientes } from "../services/validacao-cliente.js";
 
 const clienteController = (app) => {
