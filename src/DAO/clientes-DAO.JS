@@ -1,4 +1,4 @@
-import db from "../database/db-cliente.js"
+import db from "../database/conect.js"
 
 
 const daoClientes = {
