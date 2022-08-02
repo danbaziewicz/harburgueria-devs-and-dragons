@@ -1,4 +1,4 @@
-import produtosModel from "../model/produtos.js";
+import produtosModel from "../model/produtos-model.js";
 import { criaProduto } from "../services/valida-produto.js";
 
 const produtoController = (app) => {
