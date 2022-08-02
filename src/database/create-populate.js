@@ -100,19 +100,20 @@ CREATE TABLE IF NOT EXISTS "PEDIDO_CLIENTE" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "id_pedido" int, 
     "id_cliente" int,  
-    "produto" text
+    "produto" text,
+    "quantidade" int
     
     
 );`;
 
 const ADD_PEDIDO_CLIENTE_DATA = `
-INSERT INTO PEDIDO_CLIENTE (id , id_pedido, id_cliente, produto)
+INSERT INTO PEDIDO_CLIENTE (id , id_pedido, id_cliente, produto, quantidade)
 VALUES
-    (1, 2, 4, 'Sprite lata 350ml'),
-    (2, 2, 4, 'Coca-Cola lata 350ml'),
-    (3, 2, 4,'Hamburguer de Costela'),
-    (4, 3, 1, 'Hamburguer Vegano'),
-    (5, 3, 1, 'Vinho Dv Catena Malbec')
+    (1, 2, 4, 'Sprite lata 350ml',1),
+    (2, 2, 4, 'Coca-Cola lata 350ml',1),
+    (3, 2, 4,'Hamburguer de Costela',1),
+    (4, 3, 1, 'Hamburguer Vegano',1),
+    (5, 3, 1, 'Vinho Dv Catena Malbec',2)
     `
 
 function criaTabelaClientes() {
