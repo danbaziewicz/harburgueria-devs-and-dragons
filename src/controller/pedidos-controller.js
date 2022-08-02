@@ -1,7 +1,5 @@
 import Pedidos from "../model/pedidos-model.js";
-import {
-    criaPedido
-} from "../services/validacoes.js";
+import { criaPedido } from "../services/valida-pedidos.js";
 const pedidosController = (app) => {
 
     app.get('/pedido', async (req, res) => {
