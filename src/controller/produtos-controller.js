@@ -122,7 +122,6 @@ const produtoController = (app) => {
         const id = req.params.id
         try {
             const novoProduto = criaProduto(body.nome_produto, body.valor_produto, body.qtd_produto, body.fornecedor_produto, body.tipo_produto);
-            console.log(novoProduto)
             await produtosModel.atualizaProduto(id, novoProduto)
             res.json({
                 "msg" : "Produto atualizado com sucesso",
