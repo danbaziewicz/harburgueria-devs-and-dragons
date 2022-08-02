@@ -1,5 +1,5 @@
 import express from 'express'
-import funcionariosController from './controller/funcionariosController.js'
+import funcionariosController from './controller/funcionarios-controller.js'
 
 const app = express()
 
