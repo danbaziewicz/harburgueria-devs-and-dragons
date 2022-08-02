@@ -1,4 +1,4 @@
-import db from '../database/db-sqlite.js'
+import db from '../database/conect.js'
 
 const funcionariosDao = {
 
