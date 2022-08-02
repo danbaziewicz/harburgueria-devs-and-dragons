@@ -1,4 +1,4 @@
-import daoFornecedores from "../DAO/Fornecedores-DAO.js"
+import daoFornecedores from "../DAO/fornecedor-DAO.js"
 
 const fornecedoresModel = {
     insereFornecedor : async (fornecedor) => {
@@ -44,4 +44,4 @@ const fornecedoresModel = {
     }
 }
 
-export default FornecedorModel
+export default fornecedoresModel
