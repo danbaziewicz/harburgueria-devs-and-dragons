@@ -1,4 +1,4 @@
-import funcionariosDao from '../DAO/funcionariosDAO.js' 
+import funcionariosDao from '../DAO/funcionarios-DAO.js' 
 
 const funcionariosModel = {
 

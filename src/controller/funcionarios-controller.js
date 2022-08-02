@@ -1,5 +1,5 @@
-import funcionariosModel from '../model/funcionarios.js'
-import {criaFuncionarios} from '../services/validacaoFuncionarios.js' 
+import funcionariosModel from '../model/funcionarios-model.js'
+import {criaFuncionarios} from '../services/valida-funcionario.js' 
 
 
 const funcionariosController = (app) => {
