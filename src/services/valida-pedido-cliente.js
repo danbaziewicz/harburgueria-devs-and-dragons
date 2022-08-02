@@ -29,8 +29,8 @@ export const validaProduto = (produto)=>{
 }
 
 export const criaPedidoCliente = (idPedido, idCliente, produto) =>{
-    validaNome(idPedido)
-    validaPreco(idCliente)
+    validaIdPedido(idPedido)
+    validaIdCliente(idCliente)
     validaProduto(produto)
     
         
