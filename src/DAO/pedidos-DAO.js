@@ -1,4 +1,4 @@
-import db from "../database/conectar.js"
+import db from "../database/conect.js"
 
 const daoPedidos = {
 
