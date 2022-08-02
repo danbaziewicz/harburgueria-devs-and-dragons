@@ -1,5 +1,5 @@
-import fornecedoresModel from "../model/fornecedores.js";
-import { criafornecedor } from "../services/valida-fornecedor.js";
+import fornecedoresModel from "../model/fornecedor-model.js";
+//import { criafornecedor } from "../services/valida-fornecedor.js";
 
 const fornecedorController = (app) => {
 
@@ -7,7 +7,7 @@ const fornecedorController = (app) => {
         try {
             const todosfornecedor = await fornecedoresModel.pegaFornecedor()
             res.json({
-                "fornecedores" : todosfornecedores,
+                "fornecedores" : todosfornecedor,
                 "erro" : false
             })
         } catch (erro) {
@@ -21,7 +21,7 @@ const fornecedorController = (app) => {
     app.get('/fornecedor/id/:id', async (req, res)=>{
         const fornecedorId = req.params.id
         try {
-            const fornecedor = await fornecedoresModel.pegaFornecedorById(fornecedoreId)
+            const fornecedor = await fornecedoresModel.pegaFornecedorById(fornecedorId)
             res.json({
                 "fornecedores" : fornecedor,
                 "erro" : false
@@ -54,7 +54,7 @@ const fornecedorController = (app) => {
     app.get('/fornecedor/tipo/:tipo', async (req, res)=>{
         const forncedorTipo = req.params.tipo
         try {
-            const fornecedor = await fornecedoresModel.pegaFornecedorByTipo(fornecedorTipo) 
+            const fornecedor = await fornecedoresModel.pegaFornecedorByTipo(forncedorTipo) 
             res.json({
                 "fornecedores" : fornecedor,
                 "erro" : false
@@ -67,23 +67,23 @@ const fornecedorController = (app) => {
         }
     })
 
-    app.post('/fornecedor', async (req, res)=>{
-        const body = req.body
-        try {
-            const novofornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor );
-            await fornecedoresModel.insereFornecedor(novoFornecedor)
-            res.json({
-                "msg" : " Fornecedor cadastrado com sucesso",
-                "produto" : novoFornecedor,
-                "erro" : false
-            })
-        } catch (erro) {
-            res.json({
-                "msg" : erro.message,
-                "erro" : true
-            })
-        }
-    })
+    // app.post('/fornecedor', async (req, res)=>{
+    //     const body = req.body
+    //     try {
+    //         const novofornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor );
+    //         await fornecedoresModel.insereFornecedor(novofornecedor)
+    //         res.json({
+    //             "msg" : " Fornecedor cadastrado com sucesso",
+    //             "produto" : novofornecedor,
+    //             "erro" : false
+    //         })
+    //     } catch (erro) {
+    //         res.json({
+    //             "msg" : erro.message,
+    //             "erro" : true
+    //         })
+    //     }
+    // })
 
     app.delete('/fornecedor/id/:id', async (req, res)=>{
         const id = req.params.id
