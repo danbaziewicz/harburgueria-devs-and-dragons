@@ -1,4 +1,4 @@
-import pedidoClienteModel from "../model/pedido-cliente-modal.js";
+import pedidoClienteModel from "../model/pedido-cliente-model.js";
 import { criaPedidoCliente } from "../services/valida-pedido-cliente.js";
 
 const pedidoClienteController = (app) => {
