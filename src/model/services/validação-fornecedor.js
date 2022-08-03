@@ -58,9 +58,13 @@ export const validaProduto = (produtoFornecedor)=>{
     }
 }
 
-export const criaFornecedor = ( cnpj, email)=>{
+export const criaFornecedor = ( nome, cnpj, email, cidade, endereço, produto)=>{
+    validaNome(nome)
     validaCnpj(cnpj)
     validaEmail(email)
+    validaCidade(cidade)
+    validaEndereço(endereço)
+    validaProduto(produto)
     
 
     return{
