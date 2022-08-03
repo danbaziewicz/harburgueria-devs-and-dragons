@@ -31,8 +31,8 @@ const pedidoClienteModel = {
         return await daoPedidoCliente.deletaPedidoCliente(idPedidoCliente)
     },
 
-    atualizaPedidoCliente : async (idPedidoCliente, novosDados) => {
-        const pedidoCliente = await pedidoClienteModel.pegaPedidoClienteById(idPedidoCliente)
+    atualizaPedidoCliente : async (id, novosDados) => {
+        const pedidoCliente = await pedidoClienteModel.pegaPedidoClienteById(id)
         if(pedidoCliente){
             const PedidoClienteAtualizado = {
                 "id_pedido" : novosDados.id_pedido || pedidoCliente.id_pedido,
@@ -40,7 +40,7 @@ const pedidoClienteModel = {
                 "produto" : novosDados.produto || pedidoCliente.produto,
                 "quantidade" : novosDados.quantidade || pedidoCliente.quantidade                
             }
-            return await daoPedidoCliente.atualizaPedidoCliente(idPedidoCliente, PedidoClienteAtualizado)
+            return await daoPedidoCliente.atualizaPedidoCliente(id, PedidoClienteAtualizado)
         } else {
             throw new Error("Pedido cliente não encontrado")
         }

@@ -103,7 +103,7 @@ const pedidoClienteController = (app) => {
     app.delete('/pedido-cliente/id/:id', async (req, res)=>{
         const id = req.params.id
         try {
-            await pedidoClienteModel.deletaProduto(id)
+            await pedidoClienteModel.deletaPedidoCliente(id)
 
             res.json(
                 {"msg" : `Pedido cliente ${id} deletado com sucesso`,
@@ -121,9 +121,8 @@ const pedidoClienteController = (app) => {
         const body = req.body
         const id = req.params.id
         try {
-            const novoPedidoCliente = criaProduto(body.id_pedido, body.id_cliente, body.produto,body.quantidade);
-            console.log(novoPedidoCliente)
-            await pedidoClienteModel.atualizaProduto(id, novoPedidoCliente)
+            const novoPedidoCliente = criaPedidoCliente(body.id_pedido, body.id_cliente, body.produto,body.quantidade);
+            await pedidoClienteModel.atualizaPedidoCliente(id, novoPedidoCliente)
             res.json({
                 "msg" : "Pedido cliente atualizado com sucesso",
                 "pedido-cliente" : novoPedidoCliente,
