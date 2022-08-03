@@ -34,7 +34,7 @@ const pedidoClienteController = (app) => {
         }
     })
 
-    app.get('/pedido-cliente/id_pedido/:id_pedido', async (req, res)=>{
+    app.get('/pedido-cliente/idpedido/:id_pedido', async (req, res)=>{
         const pedidoClienteIdPedido = req.params.id_pedido
         try {
             const IdPedido = await pedidoClienteModel.pegaPedidoClienteByIdPedido(pedidoClienteIdPedido)
