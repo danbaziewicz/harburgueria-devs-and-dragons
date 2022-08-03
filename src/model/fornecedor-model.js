@@ -1,4 +1,4 @@
-import daofornecedores from "../DAO/fornecedor-DAO.js"
+import daoFornecedores from "../DAO/fornecedor-DAO.js"
 
 const fornecedorModel = {
     insereFornecedor : async (fornecedor) => {
@@ -26,14 +26,14 @@ const fornecedorModel = {
         const fornecedorAtual = await produtosModel.pegaFornecedorById(idFornecedor)
         if(fornecedorAtual){
             const FornecedorAtualizado = {
-                "nome_fornecedor" : novosDados.nome_fornecedor || fornecedoresAtual.nome_fornecedor,
-                "cnpj_fornecedor" : novosDados.cnpj_fornecedor || fornecedoresAtual.cnpj_fornecedor,
-                "email_fornecedor" : novosDados.email_fornecedor || fornecedoresAtual.email_fornecedor,
-                "cidade_fornecedor" : novosDados.cidade_fornecedor || fornecedoresAtual.cidade_fornecedor,
-                "endereço_fornecedor" : novosDados.endereço_fornecedor || fornecedoresAtual.endereço_fornecedor,
-                "produto_fornecedor" : novosDados.produto_fornecedor || fornecedoresAtual.produtos_fornecedor 
+                "nome_fornecedor" : novosDados.nome_fornecedor || fornecedorAtual.nome_fornecedor,
+                "cnpj_fornecedor" : novosDados.cnpj_fornecedor || fornecedorAtual.cnpj_fornecedor,
+                "email_fornecedor" : novosDados.email_fornecedor || fornecedorAtual.email_fornecedor,
+                "cidade_fornecedor" : novosDados.cidade_fornecedor || fornecedorAtual.cidade_fornecedor,
+                "endereço_fornecedor" : novosDados.endereço_fornecedor || fornecedorAtual.endereço_fornecedor,
+                "produto_fornecedor" : novosDados.produto_fornecedor || fornecedorAtual.produtos_fornecedor 
             }
-            return await daoFornecedores.atualizaFornecedor(idFornecedor, fornecedorAtualizado)
+            return await daoFornecedores.atualizaFornecedor(idFornecedor, FornecedorAtualizado)
         } else {
             throw new Error("Fornecedor não cadastrado")
         }
