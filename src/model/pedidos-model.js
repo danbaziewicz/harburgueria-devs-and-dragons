@@ -37,10 +37,10 @@ const Pedidos = {
         const pedidoAtual = await Pedidos.pedidoPeloId(id_pedido)
         if (pedidoAtual) {
             const pedidoAtualizado = {
-                "data_do_pedido": novoPedido.data_do_pedido || pedido.data_do_pedido,
-                "hora_do_pedido": novoPedido.hora_do_pedido || pedido.hora_do_pedido,
-                "valor_final": novoPedido.valor_final || pedido.valor_final,
-                "forma_de_pagamento": novoPedido.forma_de_pagamento || pedido.forma_de_pagamento
+                "data_do_pedido": novoPedido.data_do_pedido || pedidoAtual.data_do_pedido,
+                "hora_do_pedido": novoPedido.hora_do_pedido || pedidoAtual.hora_do_pedido,
+                "valor_final": novoPedido.valor_final || pedidoAtual.valor_final,
+                "forma_de_pagamento": novoPedido.forma_de_pagamento || pedidoAtual.forma_de_pagamento
             }
             return await daoPedidos.atualizaPedido(id_pedido, pedidoAtualizado)
         } else {
