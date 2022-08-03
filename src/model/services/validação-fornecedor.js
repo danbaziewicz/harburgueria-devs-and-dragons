@@ -1,10 +1,10 @@
-export const validaCpf = (cpfFornecedor)=>{
-    if(cpfFornecedor) {
-        if(cpfFornecedor.length === 11) {
-            return cpfFornecedor
+export const validaNome = (nomeFornecedor)=>{
+    if(nomeFornecedor){
+        if(nomeFornecedor == ""){
+            throw new Errow('Nome não existe')
         }
-    }else {
-        throw new Error("O CPF precisa conter 11 dígitos")
+    } else {
+        throw new Error('Insira um nome valido')
     }
 }
 
@@ -30,19 +30,47 @@ export const validaEmail = (emailFornecedor)=>{
     }
 
 }
+export const validaCidade = (cidadeFornecedor)=>{
+    if(cidadeFornecedor){
+        if(cidadeFornecedor == ""){
+            throw new Errow('Cidade não localizada')
+        }
+    } else {
+        throw new Error('Insira cidade')
+    }
+}
+export const validaEndereço = (endereçoFornecedor)=>{
+    if(endereçoFornecedor){
+        if(endereçoFornecedor == ""){
+            throw new Errow('Endereço não encontrado')
+        }
+    } else {
+        throw new Error('Insira um endereço')
+    }
+}
+export const validaProduto = (produtoFornecedor)=>{
+    if(produtoFornecedor){
+        if(produtoFornecedor == ""){
+            throw new Errow('O tipo do produto não pode ser vazio')
+        }
+    } else {
+        throw new Error('Insira um tipo para o produto')
+    }
+}
 
-export const criaClientes = (cpf, cnpj, email)=>{
-    validaCpf(cpf)
+export const criaFornecedor = ( cnpj, email)=>{
     validaCnpj(cnpj)
     validaEmail(email)
     
 
     return{
 
-        "nome_cliente" : nome,
-        "email_cliente" : email,
-        "cpf_cliente" : cpf,
-        "cnpj_cliente": telefone,
+        "nome_fornecedor" : nome,
+        "email_fornecedor" : email,
+        "cnpj_fornecedor": cnpj,
+        "cidade_fornecedor": cidade,
+        "endereço_fornecedor": endereço,
+        "produto_fornecedor": produto
         
     }
 }
