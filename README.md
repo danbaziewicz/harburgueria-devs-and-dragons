@@ -59,69 +59,69 @@ http://localhost:2020/
 
 ### FUNCIONARIOS
 
-*__GET /funcionarios__
+* __GET /funcionarios__
 Esquema da resposta
 ```json
 {
-    "Funcionarios":
-		{
-			"id": 1,
-			"nome": "Olívia Ribeiro",
-			"cpf": "03088863698",
-			"email": "olivia.ribeiro@yahoo.com.br",
-			"telefone": "999994545",
-			"cargo": "Gerente",
-			"dataDeAdmissao": "10/05/2020",
-			"salario": 3500
-		},
-    "erro": false
+   "Funcionarios":
+   {
+	"id": 1,
+	"nome": "Olívia Ribeiro",
+	"cpf": "03088863698",
+	"email": "olivia.ribeiro@yahoo.com.br",
+	"telefone": "999994545",
+	"cargo": "Gerente",
+	"dataDeAdmissao": "10/05/2020",
+	"salario": 3500
+   },
+   "erro": false
 }
 ```
-*__GET /funcionarios/id/:id__
+* __GET /funcionarios/id/:id__
 Esquema da resposta
 ```json
 {
-    "Funcionario":
-        {
-            "id": 2,
-            "nome": "Eugênio Oliveira",
-            "cpf": "15874236921",
-            "email": "eugenio.oliveira@hotmail.com.br",
-            "telefone": "987874554",
-            "cargo": "Subgerente",
-            "dataDeAdmissao": "06/12/2020",
-            "salario": 3000
-        },
-	"erro": false
+"Funcionario":
+   {
+	"id": 2,
+	"nome": "Eugênio Oliveira",
+	"cpf": "15874236921",
+	"email": "eugenio.oliveira@hotmail.com.br",
+	"telefone": "987874554",
+	"cargo": "Subgerente",
+	"dataDeAdmissao": "06/12/2020",
+	"salario": 3000
+   },
+   "erro": false
 }
 ```
 * __POST /funcionarios__
 Esquema da requisição
 ```json
 {
-	"nome": "Igor Diego",
-	"cpf": "26874136952",
-	"email": "igor@email.com",
-	"telefone": "987896333",
-	"cargo": "Supervisor",
-	"dataDeAdmissao": "02/08/2022",
-	"salario": 2510
+   "nome": "Igor Diego",
+   "cpf": "26874136952",
+   "email": "igor@email.com",
+   "telefone": "987896333",
+   "cargo": "Supervisor",
+   "dataDeAdmissao": "02/08/2022",
+   "salario": 2510
 }
 ```
 Esquema da resposta
 ```json
 {
-	"msg": "Funcionário cadastrado com sucesso",
-	"Funcionarios": {
-        "nome": "Igor Diego",
-        "cpf": "26874136952",
-        "email": "igor@email.com",
-        "telefone": "987896333",
-        "cargo": "Supervisor",
-        "dataDeAdmissao": "02/08/2022",
-        "salario": 2510
-	},
-	"erro": false
+   "msg": "Funcionário cadastrado com sucesso",
+   "Funcionarios": {
+      "nome": "Igor Diego",
+      "cpf": "26874136952",
+      "email": "igor@email.com",
+      "telefone": "987896333",
+      "cargo": "Supervisor",
+      "dataDeAdmissao": "02/08/2022",
+      "salario": 2510
+   },
+   "erro": false
 }
 ```
 * __PUT /funcionarios/id/:id__
@@ -140,14 +140,15 @@ Esquema da requisição
 Esquema de resposta
 ```json
 {
-	"msg": "Funcionario 15 atualizado com sucesso",
-	"Funcionario": {
-		"nome": "novo funcionario",
-		"cpf": "26874136952",
-		"email": "funcionarionovo@gmail.com",
-		"telefone": "987634933",
-		"cargo": "Comprados",
-    }
+   "msg": "Funcionario 15 atualizado com sucesso",
+   "Funcionario": 
+   {
+	   "nome": "novo funcionario",
+	   "cpf": "26874136952",
+	   "email": "funcionarionovo@gmail.com",
+	   "telefone": "987634933",
+	   "cargo": "Comprados",
+	}
 }
 ```
 
@@ -156,32 +157,31 @@ Esquema de resposta
 Esquema da resposta
 ```json
 {
-	"produtos": [
-		{
-			"id_produto": 1,
-			"nome_produto": "Coca-Cola lata 350ml",
-			"valor_produto": 4,
-			"qtd_produto": 5,
-			"fornecedor_produto": "Distribuidora do Zeca",
-			"tipo_produto": "refrigerante"
-		}
-    ],
-    "erro": false
+   "produtos": [
+	{
+	   "id_produto": 1,
+	   "nome_produto": "Coca-Cola lata 350ml",
+	   "valor_produto": 4,
+	   "qtd_produto": 5,
+	   "fornecedor_produto": "Distribuidora do Zeca",
+	   "tipo_produto": "refrigerante"
+	}],
+	"erro": false
 }
 ```
 * __GET  /produto/id/:id__
 Esquema da resposta
 ```json
 {
-	"produtos":
-		{
-			"id_produto": 1,
-			"nome_produto": "Coca-Cola lata 350ml",
-			"valor_produto": 4,
-			"qtd_produto": 5,
-			"fornecedor_produto": "Distribuidora do Zeca",
-			"tipo_produto": "refrigerante"
-		},
+   "produtos":
+   {
+	   "id_produto": 1,
+	   "nome_produto": "Coca-Cola lata 350ml",
+	   "valor_produto": 4,
+	   "qtd_produto": 5,
+	   "fornecedor_produto": "Distribuidora do Zeca",
+	   "tipo_produto": "refrigerante"
+	},
 	"erro": false
 }
 ```
@@ -189,15 +189,15 @@ Esquema da resposta
 Esquema da resposta
 ```json
 {
-	"produtos":
-        {
-			"id_produto": 6,
-			"nome_produto": "Vinho Alma Negra",
-			"valor_produto": 250,
-			"qtd_produto": 15,
-			"fornecedor_produto": "Imports S.A.",
-			"tipo_produto": "vinhos"
-		},
+   "produtos":
+   {
+	   "id_produto": 6,
+	   "nome_produto": "Vinho Alma Negra",
+	   "valor_produto": 250,
+	   "qtd_produto": 15,
+	   "fornecedor_produto": "Imports S.A.",
+	   "tipo_produto": "vinhos"
+	},
 	"erro": false
 }
 ```
@@ -205,15 +205,15 @@ Esquema da resposta
 Esquema da resposta
 ```json
 {
-	"produtos":
-        {
-			"id_produto": 2,
-			"nome_produto": "Sprite lata 350ml",
-			"valor_produto": 4,
-			"qtd_produto": 5,
-			"fornecedor_produto": "Distribuidora do Zeca",
-			"tipo_produto": "refrigerante"
-		},
+   "produtos":
+   {
+	   "id_produto": 2,
+	   "nome_produto": "Sprite lata 350ml",
+	   "valor_produto": 4,
+	   "qtd_produto": 5,
+	   "fornecedor_produto": "Distribuidora do Zeca",
+	   "tipo_produto": "refrigerante"
+	   },
 	"erro": false
 }
 ```
@@ -221,15 +221,15 @@ Esquema da resposta
 Esquema da resposta
 ```json
 {
-	"produtos":
-		{
-			"id_produto": 5,
-			"nome_produto": "Vinho Dv Catena Malbec",
-			"valor_produto": 230,
-			"qtd_produto": 13,
-			"fornecedor_produto": "Imports S.A.",
-			"tipo_produto": "vinhos"
-		},
+   "produtos":
+   {
+	   "id_produto": 5,
+	   "nome_produto": "Vinho Dv Catena Malbec",
+	   "valor_produto": 230,
+	   "qtd_produto": 13,
+	   "fornecedor_produto": "Imports S.A.",
+	   "tipo_produto": "vinhos"
+	   },
 	"erro": false
 }
 ```
@@ -237,23 +237,24 @@ Esquema da resposta
 Esquema da requisição
 ```json
 {
-	"nome_produto": "Fanta lata 350ml",
-	"valor_produto": 4,
-	"qtd_produto": 10,
-	"fornecedor_produto": "Distribuidora do Zeca",
-	"tipo_produto": "refrigerante"
+   "nome_produto": "Fanta lata 350ml",
+   "valor_produto": 4,
+   "qtd_produto": 10,
+   "fornecedor_produto": "Distribuidora do Zeca",
+   "tipo_produto": "refrigerante"
 }
 ```
 Esquema da resposta
 ```json
 {
-	"msg": "Produto atualizado com sucesso",
-	"produto": {
-		"nome_produto": "Fanta lata 350ml",
-		"valor_produto": 4,
-		"qtd_produto": 10,
-		"fornecedor_produto": "Distribuidora do Zeca",
-		"tipo_produto": "refrigerante"
+   "msg": "Produto atualizado com sucesso",
+   "produto": 
+   {
+	   "nome_produto": "Fanta lata 350ml",
+	   "valor_produto": 4,
+	   "qtd_produto": 10,
+	   "fornecedor_produto": "Distribuidora do Zeca",
+	   "tipo_produto": "refrigerante"
 	},
 	"erro": false
 }
@@ -262,23 +263,24 @@ Esquema da resposta
 Esquema da requisição
 ```json
 {
-	"nome_produto": "Fanta lata 350ml",
-	"valor_produto": 4,
-	"qtd_produto": 10,
-	"fornecedor_produto": "Distribuidora do Zeca",
-	"tipo_produto": "refrigerante"
+   "nome_produto": "Fanta lata 350ml",
+   "valor_produto": 4,
+   "qtd_produto": 10,
+   "fornecedor_produto": "Distribuidora do Zeca",
+   "tipo_produto": "refrigerante"
 }
 ```
 Esquema da resposta
 ```json
 {
-	"msg": "Produto atualizado com sucesso",
-	"produto": {
-		"nome_produto": "Fanta lata 350ml",
-		"valor_produto": 4,
-		"qtd_produto": 10,
-		"fornecedor_produto": "Distribuidora do Zeca",
-		"tipo_produto": "refrigerante"
+   "msg": "Produto atualizado com sucesso",
+   "produto": 
+   {
+	   "nome_produto": "Fanta lata 350ml",
+	   "valor_produto": 4,
+	   "qtd_produto": 10,
+	   "fornecedor_produto": "Distribuidora do Zeca",
+	   "tipo_produto": "refrigerante"
 	},
 	"erro": false
 }
@@ -287,7 +289,7 @@ Esquema da resposta
 Esquema da respsota
 ```json
 {
-	"msg": "Produto 7 deletado com sucesso",
-	"erro": false
+   "msg": "Produto 7 deletado com sucesso",
+   "erro": false
 }
 ```
