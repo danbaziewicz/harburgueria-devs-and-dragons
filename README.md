@@ -59,7 +59,7 @@ http://localhost:2020/
 
 ### FUNCIONARIOS
 
-*__GET /funcionarios__
+* __GET /funcionarios__
 Esquema da resposta
 ```json
 {
@@ -77,7 +77,7 @@ Esquema da resposta
     "erro": false
 }
 ```
-*__GET /funcionarios/id/:id__
+* __GET /funcionarios/id/:id__
 Esquema da resposta
 ```json
 {
