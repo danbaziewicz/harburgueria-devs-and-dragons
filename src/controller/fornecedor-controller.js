@@ -5,7 +5,7 @@ const fornecedorController = (app) => {
 
     app.get('/fornecedor', async (req, res)=>{
         try {
-            const todosfornecedor = await fornecedorModel.pegaFornecedor()
+            const todosfornecedor = await fornecedorModel.pegafornecedores()
             res.json({
                 "fornecedores" : todosfornecedor,
                 "erro" : false
