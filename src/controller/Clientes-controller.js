@@ -138,7 +138,7 @@ const clienteController = (app) => {
             await clientesModel.deletaCliente(idCliente)
 
             res.json(
-                {"msg" : `Usuário ${idCliente} deletado com sucesso`,
+                {"msg" : `Cliente ${idCliente} deletado com sucesso`,
                 "erro" : false}
             )
         } catch (error) {
