@@ -34,7 +34,7 @@ const clienteController = (app) => {
         }
     })
 
-    app.get('/cliente/nome/:nome', async (req, res)=>{
+    app.get('/cliente/nomeCompleto/:nome', async (req, res)=>{
         const nomeCliente = req.params.nome
         try {
             const cliente = await clientesModel.pegaClienteNome(nomeCliente)
