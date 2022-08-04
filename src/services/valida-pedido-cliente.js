@@ -1,7 +1,7 @@
 export const validaIdPedido = (idPedido)=>{
     if(idPedido){
         if(idPedido == ""){
-            throw new Errow('O nome do id_pedido não pode estar vazio')
+            throw new Errow('O  id_pedido não pode estar vazio')
         }
     } else {
         throw new Error('Insira id_pedido')
