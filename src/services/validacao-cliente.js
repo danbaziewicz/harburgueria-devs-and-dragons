@@ -13,6 +13,8 @@ export const validaCpf = (cpfCliente)=>{
     if(cpfCliente) {
         if(cpfCliente.length === 11) {
             return cpfCliente
+        }else{
+            throw new Error("CPF inválido")
         }
     }else {
         throw new Error("O CPF precisa conter 11 dígitos")
