@@ -1,7 +1,2 @@
 node_modules
 devs-and-dragons.db
-database.db
-package-lock.json
-package.json
-.\src\app.js
-.\src\server.js
