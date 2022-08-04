@@ -1,6 +1,6 @@
 # API - Hamburgueria Devs and Dragons 🎲🍔🍟
 
-Projeto final do Módulo 4 de Web Dev Full Stack da [Resilia Educação](https://www.resilia.com.br/) no qual tivemos a oportunidade que desenvolver uma API de um aplicativo. Nós da Squad 2 escolhemos o tema Hamburgueria e disso surgiu a Hamburgueria Devs and Dragons!
+Projeto final do Módulo 4 de Web Dev Full Stack da [Resilia Educação](https://www.resilia.com.br/) no qual tivemos a oportunidade de desenvolver uma API de um aplicativo. Nós da Squad 2 escolhemos o tema Hamburgueria e disso surgiu a Hamburgueria Devs and Dragons!
 
 Nesse projeto ficamos responsaveis por criar uma API REST no padrão MVC para a Hamburgueria Devs and Dragons, onde será possível realizar operações CRUD nas entidades abaixo:
 - Clientes
