@@ -20,9 +20,13 @@
   },
   "homepage": "https://github.com/danbaziewicz/harburgueria-devs-and-dragons#readme",
   "type": "module",
+  "engines": {
+    "node" : "16.15.1"
+  },
   "dependencies": {
     "express": "^4.18.1",
     "nodemon": "^2.0.19",
     "sqlite3": "^5.0.10"
   }
+  
 }
