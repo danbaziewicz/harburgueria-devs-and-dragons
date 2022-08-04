@@ -227,16 +227,6 @@ Exemplo de resposta:
 
 Insere um cliente no banco de dados.
 
-    Dados a serem enviados no body via POST
-
-
-  `"nome_cliente"`: Nome do cliente;
-   `"email_cliente"` : Email do cliente (string, obrigatório possuir o @);
-  `"cpf_cliente"` :  CPF do cliente (número de 11 digitos);
-  `"telefone_cliente"` : Telefone do cliente (número de telefone deve possuir 11 dígitos);
-  `"senha_cliente"` : senha do cliente (deve possuir 8 ou mais dígitos).
-
-
 Exemplo de body de requisição:
 ```json
 {
