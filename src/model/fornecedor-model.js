@@ -1,8 +1,8 @@
 import daoFornecedores from "../DAO/fornecedor-DAO.js"
 
 const fornecedorModel = {
-    insereFornecedor : async (fornecedor) => {
-        return await daoFornecedores.insereFornecedor()
+    insereFornecedor : async (fornecedores) => {
+        return await daoFornecedores.insereFornecedor(fornecedores)
     },
 
     pegafornecedores : async () => {
@@ -17,15 +17,19 @@ const fornecedorModel = {
         return await daoFornecedores.pegaFornecedorByNome(nomeFornecedor)
     },
 
+    pegaFornecedorByCnpj : async (cnpjFornecedor) => {
+        return await daoFornecedores.pegaFornecedorByCnpj(cnpjFornecedor)
+    },
+
     
     deletaFornecedor : async (idFornecedor) => {
-        return await daoFornecedor.deletaFornecedor(idFornecedor)
+        return await daoFornecedores.deletaFornecedor(idFornecedor)
     },
 
     atualizaFornecedor : async (idFornecedor, novosDados) => {
-        const fornecedorAtual = await produtosModel.pegaFornecedorById(idFornecedor)
+        const fornecedorAtual = await fornecedorModel.pegaFornecedorById(idFornecedor)
         if(fornecedorAtual){
-            const FornecedorAtualizado = {
+            const fornecedorAtualizado = {
                 "nome_fornecedor" : novosDados.nome_fornecedor || fornecedorAtual.nome_fornecedor,
                 "cnpj_fornecedor" : novosDados.cnpj_fornecedor || fornecedorAtual.cnpj_fornecedor,
                 "email_fornecedor" : novosDados.email_fornecedor || fornecedorAtual.email_fornecedor,
