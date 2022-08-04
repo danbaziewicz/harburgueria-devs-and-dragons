@@ -107,7 +107,6 @@ const fornecedorController = (app) => {
         const id = req.params.id
         try {
             const novoFornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor);
-            console.log(novoFornecedor)
             await fornecedoresModel.atualizaFornecedor(id, novoFornecedor)
             res.json({
                 "msg" : "Fornecedor atualizado",

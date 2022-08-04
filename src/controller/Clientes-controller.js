@@ -154,7 +154,6 @@ const clienteController = (app) => {
         const idCliente = req.params.id
         try {
             const newCliente = criaClientes(body.nome_cliente, body.email_cliente, body.cpf_cliente, body.telefone_cliente, body.senha_cliente);
-            console.log(newCliente)
             await clientesModel.atualizaCliente(idCliente, newCliente)
             res.json({
                 "msg" : "Cliente atualizado com sucesso",

@@ -136,7 +136,6 @@ const pedidosController = (app) => {
         const id = req.params.id
         try {
             const novoPedido = criaPedido(body.data_do_pedido, body.hora_do_pedido, body.valor_final, body.forma_de_pagamento);
-            console.log(novoPedido)
             await Pedidos.atualizaPedido(id, novoPedido)
             res.json({
                 "msg": "Pedido atualizado com sucesso",

@@ -59,7 +59,6 @@ const funcionariosController = (app) => {
         const id = req.params.id
         try {
             const novosFuncionario = criaFuncionarios(body.nome, body.cpf, body.email, body.telefone, body.cargo, body.dataDeAdmissao, body.salario)
-            console.log(novosFuncionario)
             await funcionariosModel.atualizaFuncionarios(id, novosFuncionario) 
             res.json({
                 "msg": `Funcionario ${id} atualizado com sucesso`,
