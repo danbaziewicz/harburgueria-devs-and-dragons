@@ -1,2 +1,7 @@
 node_modules
+<<<<<<< HEAD
 devs-and-dragons.db
+=======
+devs-and-dragons.db
+database.db
+>>>>>>> origin/develop
