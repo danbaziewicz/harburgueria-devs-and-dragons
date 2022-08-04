@@ -1,47 +1,129 @@
-import daoFornecedores from "../DAO/Fornecedores-DAO.js"
+import db from "../database/conect.js"
 
-const fornecedoresModel = {
-    insereFornecedor : async (fornecedor) => {
-        return await daoFornecedores.insereFornecedor(fornecedor)
+const daoFornecedores = {
+    
+    pegaTodosFornecedores : () =>{
+        const PEGA_FORNECEDORES = 'SELECT * FROM FORNECEDORES'
+        return new Promise((resolve, reject)=>{
+            db.all(PEGA_FORNECEDORES, (error, row)=>{
+                if (error){
+                    reject(error)
+                } else {
+                    resolve(row)
+                }
+            })
+        })
     },
 
-    pegaFornecedores : async () => {
-        return await daoFornecedores.pegaTodosFornecedores()
+    pegaFornecedorById : (fornecedorId) => {
+        const PEGA_FORNECEDOR_ID = 'SELECT * FROM FORNECEDORES WHERE id_fornecedor = ?'
+
+        return new Promise((resolve, reject)=>{
+            db.get(PEGA_FORNECEDOR_ID, fornecedorId, (error, row)=>{
+                if(error){
+                    reject(error)
+                } else {
+                    resolve (row)
+                }
+            })
+        })
     },
 
-    pegaFornecedorById : async (idFornecedor) => {
-        return await daoFornecedores.pegaFornecedorById(idFornecedor)
+    pegaFornecedorByNome : (nomeFornecedor) => {
+        const PEGA_FORNECEDOR_NOME = 'SELECT * FROM FORNECEDORES WHERE nome_fornecedor = ?'
+
+        return new Promise((resolve, reject)=>{
+            db.all(PEGA_FORNECEDOR_NOME, nomeFornecedor, (error, row)=>{
+                if(error){
+                    reject(error)
+                } else {
+                    resolve (row)
+                }
+            })
+        })
     },
 
-    pegaProdutoByNome : async (nomeFornecedor) => {
-        return await daoFornecedores.pegaFornecedorByNome(nomeFornecedor)
+    pegaFornecedorByCnpj : (cnpjFornecedor) => {
+        const PEGA_FORNECEDOR_CNPJ = 'SELECT * FROM FORNECEDORES WHERE cnpj_fornecedor = ?'
+
+        return new Promise((resolve, reject)=>{
+            db.all(PEGA_FORNECEDOR_CNPJ, cnpjFornecedor, (error, row)=>{
+                if(error){
+                    reject(error)
+                } else {
+                    resolve (row)
+                }
+            })
+        })
     },
 
-   
-    pegaFornecedorByTipo : async (tipoFornecedor) => {
-        return await daoFornecedores.pegaFornecedorByTipo(tipoFornecedor)
+    pegaFornecedorByProduto : (produtoFornecedor) => {
+        const PEGA_FORNECEDOR_PRODUTO = 'SELECT * FROM FORNECEDORES WHERE produto_fornecedor = ?'
+
+        return new Promise((resolve, reject)=>{
+            db.all(PEGA_FORNECEDOR_PRODUTO, produtoFornecedor, (error, row)=>{
+                if(error){
+                    reject(error)
+                } else {
+                    resolve (row)
+                }
+            })
+        })
     },
 
-    deletaFornecedor : async (idFornecedor) => {
-        return await daoFornecedor.deletaFornecedor(idFornecedor)
+    insereFornecedor : (fornecedor)=>{
+        const INSERE_FORNECEDOR = `
+        INSERT INTO FORNECEDORES (nome_fornecedor, cnpj_fornecedor, email_fornecedor, cidade_fornecedor, endereço_fornecedor, produto_fornecedor)
+        VALUES (?, ?, ?, ?, ?)
+        `
+        return new Promise((resolve, reject)=>{
+            db.run(INSERE_FORNECEDOR, fornecedor.nome_fornecedor, fornecedor.cnpj_fornecedor, fornecedor.email_fornecedor, fornecdor.cidade_fornecedor, fornecedor.endereço_fornecedor, fornecedor.produto_fornecedor,
+                (error)=>{
+                    if(error){
+                        reject(error)
+                    } else {
+                        resolve(fornecedor)
+                    }
+                }
+            )
+        })
+    },
+    
+    deletaFornecedor : (id)=>{
+        const DELETA_FORNECEDOR = `DELETE FROM FORNECEDORES WHERE id_fornecedor = ?`
+
+        return new Promise((resolve, reject)=>{
+            db.get(DELETA_FORNECEDOR, id, (error, row)=>{
+                if(error){
+                    reject(error)
+                } else {
+                    resolve (`Fornecedor ${id} deletado com sucesso`)
+                }
+            })
+        })
     },
 
-    atualizaFornecedor : async (idFornecedor, novosDados) => {
-        const fornecedorAtual = await FornecedoressModel.pegaFornecedorById(idFornecedor)
-        if(fornecedorAtual){
-            const fornecedorAtualizado = {
-                "nome_fornecedor" : novosDados.nome_fornecedor || fornecedoresAtual.nome_fornecedor,
-                "cnpj_fornecedor" : novosDados.cnpj_fornecedor || fornecedoresAtual.cnpj_fornecedor,
-                "email_fornecedor" : novosDados.email_fornecedor || fornecedoresAtual.email_fornecedor,
-                "cidade_fornecedor" : novosDados.cidade_fornecedor || fornecedoresAtual.cidade_fornecedor,
-                "endereço_fornecedor" : novosDados.endereço_fornecedor || fornecedoresAtual.endereço_fornecedor,
-                "produto_fornecedor" : novosDados.produto_fornecedor || fornecedoresAtual.produtos_fornecedor 
-            }
-            return await daoFornecedores.atualizaFornecedor(idFornecedor, fornecedorAtualizado)
-        } else {
-            throw new Error("Fornecedor não cadastrado")
-        }
+    atualizaFornecedor : (id_fornecedor, novoFornecedor)=>{
+        const ATUALIZA_FORNECEDOR = `UPDATE FORNECEDOR
+        SET nome_fornecedor = ?,
+        cnpj_fornecedor = ?, 
+        email_fornecedor = ?, 
+        cidade_fornecedor = ?, 
+        endereço_fornecedor = ?,
+        produto_fornecedor = ?,
+        WHERE id_fornecedor= ?`
+         
+        return new Promise((resolve, reject)=>{
+            db.run(ATUALIZA_FORNECEDOR, novoFornecedor.nome_fornecedor, novoFornecedor.cnpj_fornecedor, novofornecedor.email_fornecedor, novoFornecedor.cidade_fornecedor, novoFornecedor.endereço_fornecedor, novoFornecedor.produto_fornecdor, id_fornecedor,
+                (error)=>{
+                    if(error){
+                        reject(error)
+                    } else {
+                        resolve (novoFornecedor)
+                    }
+                })
+        })
     }
 }
 
-export default FornecedorModel
+export default daoFornecedores

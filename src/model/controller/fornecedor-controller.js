@@ -1,13 +1,13 @@
-import fornecedoresModel from "../model/fornecedores.js";
-import { criafornecedor } from "../services/valida-fornecedor.js";
+import fornecedorModel from "../model/fornecedor-model.js";
+import { criaFornecedor } from "../services/validação-fornecedor"; 
 
 const fornecedorController = (app) => {
 
     app.get('/fornecedor', async (req, res)=>{
         try {
-            const todosfornecedor = await fornecedoresModel.pegaFornecedor()
+            const todosfornecedor = await fornecedorModel.pegaFornecedor()
             res.json({
-                "fornecedores" : todosfornecedores,
+                "fornecedores" : todosfornecedor,
                 "erro" : false
             })
         } catch (erro) {
@@ -21,7 +21,7 @@ const fornecedorController = (app) => {
     app.get('/fornecedor/id/:id', async (req, res)=>{
         const fornecedorId = req.params.id
         try {
-            const fornecedor = await fornecedoresModel.pegaFornecedorById(fornecedoreId)
+            const fornecedor = await fornecedorModel.pegaFornecedorById(fornecedorId)
             res.json({
                 "fornecedores" : fornecedor,
                 "erro" : false
@@ -37,7 +37,7 @@ const fornecedorController = (app) => {
     app.get('/fornecedor/nome/:nome', async (req, res)=>{
         const fornecedorNome = req.params.nome
         try {
-            const fornecedor = await fornecedoresModel.pegaFornecedorByNome(fornecedorNome)
+            const fornecedor = await fornecedorModel.pegaFornecedorByNome(fornecedorNome)
             res.json({
                 "fornecedores" : fornecedor,
                 "erro" : false
@@ -51,10 +51,10 @@ const fornecedorController = (app) => {
     })
 
     
-    app.get('/fornecedor/tipo/:tipo', async (req, res)=>{
-        const forncedorTipo = req.params.tipo
+    app.get('/fornecedor/cnpj/:cnpj', async (req, res)=>{
+        const fornecedorCnpj = req.params.cnpj
         try {
-            const fornecedor = await fornecedoresModel.pegaFornecedorByTipo(fornecedorTipo) 
+            const fornecedor = await fornecedorModel.pegaFornecedorByCnpj(fornecedorCnpj) 
             res.json({
                 "fornecedores" : fornecedor,
                 "erro" : false
@@ -70,8 +70,8 @@ const fornecedorController = (app) => {
     app.post('/fornecedor', async (req, res)=>{
         const body = req.body
         try {
-            const novofornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor );
-            await fornecedoresModel.insereFornecedor(novoFornecedor)
+            const novoFornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor );
+            await fornecedorModel.insereFornecedor(novoFornecedor)
             res.json({
                 "msg" : " Fornecedor cadastrado com sucesso",
                 "produto" : novoFornecedor,
@@ -88,10 +88,10 @@ const fornecedorController = (app) => {
     app.delete('/fornecedor/id/:id', async (req, res)=>{
         const id = req.params.id
         try {
-            await fornecedoresModel.deletaFornecedor(id)
+            await fornecedorModel.deletaFornecedor(id)
 
             res.json(
-                {"msg" : `Usuário ${id} deletado com sucesso`,
+                {"msg" : `Fornecedor ${id} deletado com sucesso`,
                 "erro" : false}
             )
         } catch (error) {
@@ -108,7 +108,7 @@ const fornecedorController = (app) => {
         try {
             const novoFornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor);
             console.log(novoFornecedor)
-            await fornecedoresModel.atualizaFornecedor(id, novoFornecedor)
+            await fornecedorModel.atualizaFornecedor(id, novoFornecedor)
             res.json({
                 "msg" : "Fornecedor atualizado",
                 "fornecedor" : novoFornecedor,
