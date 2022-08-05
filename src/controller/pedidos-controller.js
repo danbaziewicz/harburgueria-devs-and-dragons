@@ -1,7 +1,45 @@
 import Pedidos from "../model/pedidos-model.js";
-import { criaPedido } from "../services/valida-pedidos.js";
+import {
+    criaPedido
+} from "../services/valida-pedidos.js";
 const pedidosController = (app) => {
+    app.get('/', (req, res) => {
+        res.send(`
+        <div style="padding-left: 0.938rem; padding-right: 0.938rem;">
 
+            <h1>Bem vindo(a) à API - Hamburgueria Devs and Dragons </h1>
+
+            <ul>
+
+                <li  style="font-size: 1.25rem;">Para ver os clientes, basta por /cliente após o fim da url.</li>
+                <br>
+                <li  style="font-size: 1.25rem;">Para ver os produtos, basta por /produto após o fim da url.</li>
+                <br>
+                <li  style="font-size: 1.25rem;">Para ver os funcionários, basta por /funcionarios após o fim da url.</li>
+                <br>
+                <li  style="font-size: 1.25rem;">Para ver os pedidos, basta por /pedido após o fim da url.</li>
+                <br>
+
+                <br>
+                <li  style="font-size: 1.25rem;">Para ver os pedido-cliente, basta por /pedido-cliente após o fim da url.</li>
+                <br>
+                <li  style="font-size: 1.25rem;">Para ver os fornecedores, basta por /fornecedor após o fim da url.</li>
+                <br>
+
+
+            </ul>
+
+            <br>
+
+            <p><a href="https://github.com/danbaziewicz/harburgueria-devs-and-dragons" target="_blank">Repositório da api</a></p>
+
+            <br>
+
+            <p>Api criada por: Squad 2 - Resília</p>
+
+        </div>
+        `)
+    })
     app.get('/pedido', async (req, res) => {
         try {
             const todosPedidos = await Pedidos.pegaPedidos()
