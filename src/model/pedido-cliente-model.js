@@ -1,44 +1,44 @@
 import daoPedidoCliente from "../DAO/pedido-cliente-DAO.js"
 
 const pedidoClienteModel = {
-    inserePedidoCliente : async (pedidoCliente) => {
+    inserePedidoCliente: async (pedidoCliente) => {
         return await daoPedidoCliente.inserePedidoCliente(pedidoCliente)
     },
 
-    pegaPedidoCliente : async () => {
+    pegaPedidoCliente: async () => {
         return await daoPedidoCliente.pegaTodosPedidoCliente()
     },
-    pegaPedidoClienteById : async (id) => {
+    pegaPedidoClienteById: async (id) => {
         return await daoPedidoCliente.pegaPedidoClienteById(id)
-    },  
+    },
 
-    pegaPedidoClienteByIdPedido : async (idPedido) => {
+    pegaPedidoClienteByIdPedido: async (idPedido) => {
         return await daoPedidoCliente.pegaPedidoClienteByIdPedido(idPedido)
-    },  
+    },
 
-    pegaPedidoClienteByIdCliente : async (idCliente) => {
+    pegaPedidoClienteByIdCliente: async (idCliente) => {
         return await daoPedidoCliente.pegaPedidoClienteByIdCliente(idCliente)
     },
-    
-    pegaPedidoClienteByProduto : async (produto) => {
+
+    pegaPedidoClienteByProduto: async (produto) => {
         return await daoPedidoCliente.pegaPedidoClienteByProduto(produto)
     },
-    pegaPedidoClienteQtd : async (quantidade) => {
+    pegaPedidoClienteQtd: async (quantidade) => {
         return await daoPedidoCliente.pegaPedidoClienteByTipo(quantidade)
     },
 
-    deletaPedidoCliente : async (idPedidoCliente) => {
+    deletaPedidoCliente: async (idPedidoCliente) => {
         return await daoPedidoCliente.deletaPedidoCliente(idPedidoCliente)
     },
 
-    atualizaPedidoCliente : async (id, novosDados) => {
+    atualizaPedidoCliente: async (id, novosDados) => {
         const pedidoCliente = await pedidoClienteModel.pegaPedidoClienteById(id)
-        if(pedidoCliente){
+        if (pedidoCliente) {
             const PedidoClienteAtualizado = {
-                "id_pedido" : novosDados.id_pedido || pedidoCliente.id_pedido,
-                "id_cliente" : novosDados.id_cliente || pedidoCliente.id_cliente,
-                "produto" : novosDados.produto || pedidoCliente.produto,
-                "quantidade" : novosDados.quantidade || pedidoCliente.quantidade                
+                "id_pedido": novosDados.id_pedido || pedidoCliente.id_pedido,
+                "id_cliente": novosDados.id_cliente || pedidoCliente.id_cliente,
+                "produto": novosDados.produto || pedidoCliente.produto,
+                "quantidade": novosDados.quantidade || pedidoCliente.quantidade
             }
             return await daoPedidoCliente.atualizaPedidoCliente(id, PedidoClienteAtualizado)
         } else {
