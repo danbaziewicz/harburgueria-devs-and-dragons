@@ -1,4 +1,4 @@
-import daoPedidoCliente from "../DAO/pedido-cliente-DAO.js"
+import daoPedidoCliente from "../DAO/pedido-cliente-Dao.js"
 
 const pedidoClienteModel = {
     inserePedidoCliente: async (pedidoCliente) => {
