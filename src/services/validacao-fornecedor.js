@@ -41,12 +41,13 @@ export const validaCidade = (cidadeFornecedor)=>{
 }
 export const validaEndereco = (enderecoFornecedor)=>{
     if(enderecoFornecedor){
-        if(enderecoFornecedor == ""){
+        if(enderecoFornecedor === ""){
             throw new Errow('O endereço não pode estar vazio')
         }
     } else {
-        throw new Error('Insira um endereço')
+        throw new Error('Insira um endereço válido')
     }
+    console.log(enderecoFornecedor)
 }
 export const validaProduto = (produtoFornecedor)=>{
     if(produtoFornecedor){
@@ -73,7 +74,7 @@ export const criaFornecedor = ( nome, cnpj, email, cidade, endereco, produto)=>{
         "email_fornecedor" : email,
         "cnpj_fornecedor": cnpj,
         "cidade_fornecedor": cidade,
-        "endereco_fornecedor": endereco,
+        "endereço_fornecedor": endereco,
         "produto_fornecedor": produto
 
     }
