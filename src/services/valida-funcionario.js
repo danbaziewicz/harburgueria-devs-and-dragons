@@ -1,3 +1,13 @@
+export const validaNome = (nomeFuncionario)=>{
+    if(nomeFuncionario){
+        if(nomeFuncionario == ""){
+            throw new Errow('O campo nome não pode estar vazio')
+        }
+    } else {
+        throw new Error('Insira um nome')
+    }
+}
+
 export const validaCpf = (cpf) => {
     if(cpf) {
         if(cpf.length === 11) {
@@ -33,6 +43,7 @@ export const validaTelefone = (telefone) => {
 }
 
 export const criaFuncionarios = (nome, cpf, email, telefone, cargo, dataDeAdmissao, salario)=>{
+    validaNome(nome)
     validaEmail(email)
     validaCpf(cpf)
     validaTelefone(telefone)
