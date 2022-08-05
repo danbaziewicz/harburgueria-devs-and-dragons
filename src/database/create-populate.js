@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS "FUNCIONARIOS" (
 
 const ADD_FUNCIONARIOS_DATA = `
 INSERT INTO FUNCIONARIOS (id, nome, cpf, email, telefone, cargo, dataDeAdmissao, salario)
-VALUES 
+VALUES
     (1, 'Olívia Ribeiro', '03088863698', 'olivia.ribeiro@yahoo.com.br', '999994545', 'Gerente', '10/05/2020', 3500),
     (2, 'Eugênio Oliveira', '15874236921', 'eugenio.oliveira@hotmail.com.br', 987874554, 'Subgerente', '06/12/2020', 3000),
     (3, 'Carolina Lima', '23698741353', 'carolina-l@gmail.com', 974783121, 'Operadora de caixa', '12/11/2021', 1550),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS "PEDIDOS" (
     "id_pedido" INTEGER PRIMARY KEY AUTOINCREMENT,
     "data_do_pedido" VARCHAR(32),
     "hora_do_pedido" VARCHAR(32),
-    "valor_final" VARCHAR(32), 
+    "valor_final" VARCHAR(32),
     "forma_de_pagamento" VARCHAR(32)
 );`;
 
@@ -78,10 +78,10 @@ VALUES
 const PRODUTOS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PRODUTOS" (
     "id_produto" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "nome_produto" text, 
-    "valor_produto" real, 
-    "qtd_produto" int, 
-    "fornecedor_produto" text, 
+    "nome_produto" text,
+    "valor_produto" real,
+    "qtd_produto" int,
+    "fornecedor_produto" text,
     "tipo_produto" text
 );`;
 
@@ -98,8 +98,8 @@ VALUES
 const PEDIDO_CLIENTE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PEDIDO_CLIENTE" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "id_pedido" int, 
-    "id_cliente" int,  
+    "id_pedido" int,
+    "id_cliente" int,
     "produto" text,
     "quantidade" int
 );`;
@@ -116,16 +116,16 @@ VALUES
 const FORNECEDORES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "FORNECEDORES" (
     "id_fornecedor" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "nome_fornecedor" text, 
-    "cnpj_fornecedor" text, 
-    "email_fornecedor" text, 
-    "cidade_fornecedor" text, 
-    "endereço_fornecedor" text,
+    "nome_fornecedor" text,
+    "cnpj_fornecedor" text,
+    "email_fornecedor" text,
+    "cidade_fornecedor" text,
+    "endereco_fornecedor" text,
     "produto_fornecedor" text
     );`;
-    
+
 const ADD_FORNECEDORES_DATA = `
-INSERT INTO FORNECEDORES (id_fornecedor, nome_fornecedor, cnpj_fornecedor, email_fornecedor, cidade_fornecedor, endereço_fornecedor, produto_fornecedor)
+INSERT INTO FORNECEDORES (id_fornecedor, nome_fornecedor, cnpj_fornecedor, email_fornecedor, cidade_fornecedor, endereco_fornecedor, produto_fornecedor)
 VALUES
     (1, 'José', '53.948.343/0001-49', 'josel79@gmail.com', 'Rio de Janeiro', '4243 Desiree Gateway Suite 854 - Concord, VT / 68035', 'papel higiênico'),
     (2, 'Carlos', '69.886.035/0001-76', 'carlos96@hotmail.com', 'Nova Iguaçu', '224 Pietro Crescent Suite 291 - Folsom, MA / 87559', 'pão brioche'),

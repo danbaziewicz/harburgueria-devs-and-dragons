@@ -50,11 +50,11 @@ const fornecedorController = (app) => {
         }
     })
 
-    
+
     app.get('/fornecedor/cnpj/:cnpj', async (req, res)=>{
         const fornecedorCnpj = req.params.cnpj
         try {
-            const fornecedor = await fornecedorModel.pegaFornecedorByCnpj(fornecedorCnpj) 
+            const fornecedor = await fornecedorModel.pegaFornecedorByCnpj(fornecedorCnpj)
             res.json({
                 "fornecedores" : fornecedor,
                 "erro" : false
@@ -70,7 +70,7 @@ const fornecedorController = (app) => {
     app.post('/fornecedor', async (req, res)=>{
         const body = req.body
         try {
-            const novoFornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor );
+            const novoFornecedor = criaFornecedor(body.nome_fornecedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereco_fornecedor, body.produto_fornecedor );
             await fornecedorModel.insereFornecedor(novoFornecedor)
             res.json({
                 "msg" : " Fornecedor cadastrado com sucesso",
@@ -101,12 +101,12 @@ const fornecedorController = (app) => {
             )
         }
     })
-    
+
     app.put('/fornecedor/id/:id', async (req, res)=>{
         const body = req.body
         const id = req.params.id
         try {
-            const novoFornecedor = criaFornecedor(body.nome_forncedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereço_fornecedor, body.produto_fornecedor);
+            const novoFornecedor = criaFornecedor(body.nome_fornecedor, body.cnpj_fornecedor, body.email_fornecedor, body.cidade_fornecedor, body.endereco_fornecedor, body.produto_fornecedor);
             await fornecedorModel.atualizaFornecedor(id, novoFornecedor)
             res.json({
                 "msg" : "Fornecedor atualizado",
