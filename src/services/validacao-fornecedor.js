@@ -74,7 +74,7 @@ export const criaFornecedor = ( nome, cnpj, email, cidade, endereco, produto)=>{
         "email_fornecedor" : email,
         "cnpj_fornecedor": cnpj,
         "cidade_fornecedor": cidade,
-        "endereço_fornecedor": endereco,
+        "endereco_fornecedor": endereco,
         "produto_fornecedor": produto
 
     }

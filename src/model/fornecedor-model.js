@@ -34,7 +34,7 @@ const fornecedorModel = {
                 "cnpj_fornecedor" : novosDados.cnpj_fornecedor || fornecedorAtual.cnpj_fornecedor,
                 "email_fornecedor" : novosDados.email_fornecedor || fornecedorAtual.email_fornecedor,
                 "cidade_fornecedor" : novosDados.cidade_fornecedor || fornecedorAtual.cidade_fornecedor,
-                "endereço_fornecedor" : novosDados.endereço_fornecedor || fornecedorAtual.endereco_fornecedor,
+                "endereco_fornecedor" : novosDados.endereco_fornecedor || fornecedorAtual.endereco_fornecedor,
                 "produto_fornecedor" : novosDados.produto_fornecedor || fornecedorAtual.produtos_fornecedor
             }
             return await daoFornecedores.atualizaFornecedor(idFornecedor, fornecedorAtualizado)

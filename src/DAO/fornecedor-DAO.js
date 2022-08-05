@@ -1,7 +1,7 @@
 import db from "../database/conect.js"
 
 const daoFornecedores = {
-    
+
     pegaTodosFornecedores : () =>{
         const PEGA_FORNECEDORES = 'SELECT * FROM FORNECEDORES'
         return new Promise((resolve, reject)=>{
@@ -73,11 +73,11 @@ const daoFornecedores = {
 
     insereFornecedor : (fornecedor)=>{
         const INSERE_FORNECEDOR = `
-        INSERT INTO FORNECEDORES (nome_fornecedor, cnpj_fornecedor, email_fornecedor, cidade_fornecedor, endereço_fornecedor, produto_fornecedor)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO FORNECEDORES (nome_fornecedor, cnpj_fornecedor, email_fornecedor, cidade_fornecedor, endereco_fornecedor, produto_fornecedor)
+        VALUES (?, ?, ?, ?, ?, ?)
         `
         return new Promise((resolve, reject)=>{
-            db.run(INSERE_FORNECEDOR, fornecedor.nome_fornecedor, fornecedor.cnpj_fornecedor, fornecedor.email_fornecedor, fornecdor.cidade_fornecedor, fornecedor.endereço_fornecedor, fornecedor.produto_fornecedor,
+            db.run(INSERE_FORNECEDOR, fornecedor.nome_fornecedor, fornecedor.cnpj_fornecedor, fornecedor.email_fornecedor, fornecedor.cidade_fornecedor, fornecedor.endereco_fornecedor, fornecedor.produto_fornecedor,
                 (error)=>{
                     if(error){
                         reject(error)
@@ -88,7 +88,7 @@ const daoFornecedores = {
             )
         })
     },
-    
+
     deletaFornecedor : (id)=>{
         const DELETA_FORNECEDOR = `DELETE FROM FORNECEDORES WHERE id_fornecedor = ?`
 
@@ -106,15 +106,15 @@ const daoFornecedores = {
     atualizaFornecedor : (id_fornecedor, novoFornecedor)=>{
         const ATUALIZA_FORNECEDOR = `UPDATE FORNECEDOR
         SET nome_fornecedor = ?,
-        cnpj_fornecedor = ?, 
-        email_fornecedor = ?, 
-        cidade_fornecedor = ?, 
-        endereço_fornecedor = ?,
-        produto_fornecedor = ?,
+        cnpj_fornecedor = ?,
+        email_fornecedor = ?,
+        cidade_fornecedor = ?,
+        endereco_fornecedor = ?,
+        produto_fornecedor = ?
         WHERE id_fornecedor= ?`
-         
+
         return new Promise((resolve, reject)=>{
-            db.run(ATUALIZA_FORNECEDOR, novoFornecedor.nome_fornecedor, novoFornecedor.cnpj_fornecedor, novofornecedor.email_fornecedor, novoFornecedor.cidade_fornecedor, novoFornecedor.endereço_fornecedor, novoFornecedor.produto_fornecdor, id_fornecedor,
+            db.run(ATUALIZA_FORNECEDOR, novoFornecedor.nome_fornecedor, novoFornecedor.cnpj_fornecedor, novoFornecedor.email_fornecedor, novoFornecedor.cidade_fornecedor, novoFornecedor.endereco_fornecedor, novoFornecedor.produto_fornecdor, id_fornecedor,
                 (error)=>{
                     if(error){
                         reject(error)
