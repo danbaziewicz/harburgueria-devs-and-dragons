@@ -1,3 +1,13 @@
+export const validaNome = (nomeCliente)=>{
+    if(nomeCliente){
+        if(nomeCliente == ""){
+            throw new Errow('O  nome não pode estar vazio')
+        }
+    } else {
+        throw new Error('Insira um nome')
+    }
+}
+
 export const validaSenha = (senhaCliente)=>{
     if(senhaCliente){
         if(senhaCliente.length >= 8){
@@ -45,6 +55,7 @@ export const validaEmail = (emailCliente)=>{
 }
 
 export const criaClientes = (nome, email, cpf, telefone, senha)=>{
+    validaNome(nome)
     validaEmail(email)
     validaCpf(cpf)
     validaTelefone(telefone)
