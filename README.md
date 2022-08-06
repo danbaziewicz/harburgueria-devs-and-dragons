@@ -79,7 +79,7 @@ http://localhost:2020/
 ---
 ## 🛣️ Rotas implementadas nas entidades
 
-###Clientes
+## Clientes
 - **GET `http://localhost:2020/cliente`**
 
 Retorna todos os clientes do banco de dados.
@@ -294,7 +294,7 @@ Esquema de Resposta:
 }
 ```
 
-###Produtos
+## Produtos
 - **GET `http://localhost:2020/produto`**
 
 Retorna todos os produtos do banco de dados.
@@ -467,7 +467,7 @@ Esquema de Resposta:
 }
 ```
 
-###Funcionários
+## Funcionários
 - **GET `http://localhost:2020/funcionario`**
 
 Retorna todos os funcionarios do banco de dados.
@@ -589,7 +589,7 @@ Esquema de Resposta:
 }
 ```
 
-###Pedidos
+## Pedidos
 - **GET `http://localhost:2020/pedido`**
 
 Retorna todos os pedidos do banco de dados.
@@ -748,7 +748,7 @@ Esquema de Resposta:
 }
 ```
 
-###Pedido-cliente
+## Pedido-cliente
 - **GET `http://localhost:2020/pedido-cliente`**
 
 Retorna todos os pedido-cliente do banco de dados.
@@ -925,24 +925,23 @@ Esquema de Resposta:
 
 ```
 
-###Fornecedores
+### Fornecedores
 - **GET `http://localhost:2020/fornecedor`**
 
 Retorna todos os fornecedores do banco de dados.
 Exemplo de resposta:
 ```json
 {
-    "Fornecedores": [
-        {
-            "id": 1,
-            "nome": "José ",
-            "cnpj": "53.948.343/0001-49 ",
-            "email": "josel79@gmail.com”,
-            "cidade": "Rio de Janeiro ",
-            "endereço": "4243 Desiree Gateway Suite 854 – Concord, VT/ 68035 ",
-            "produto": " papel higiênico",
-        }
-}
+	"fornecedores": [
+		{
+			"id_fornecedor": 1,
+			"nome_fornecedor": "Carlos",
+			"cnpj_fornecedor": "69.886.035/0001-76",
+			"email_fornecedor": "carlos96@hotmail.com",
+			"cidade_fornecedor": "Nova Iguaçu",
+			"endereco_fornecedor": "224 Pietro Crescent Suite 291 - Folsom, MA / 87559",
+			"produto_fornecedor": "papel higiênico"
+		},
 
 ```
 
@@ -953,16 +952,16 @@ Retorna o fornecedor com o id especificado.
 Exemplo de resposta:
 ```json
 {
-    "Fornecedores": [
-        {
-            "id": 2,
-            "nome": "Carlos ",
-            "cnpj": "69.886.035/0001-76 ",
-            "email": " carlos96@hotmail.com”,
-            "cidade": " Nova iguaçu",
-            "endereço": " 242 Pietro Crescent Suite 291 – Folsom, MA / 87559 ",
-            "produto": "pão brioche ",
-        }
+	"fornecedores": {
+		"id_fornecedor": 6,
+		"nome_fornecedor": "Paulo",
+		"cnpj_fornecedor": "52.790.304/0001-01",
+		"email_fornecedor": "paulo.stroman58@yahoo.com",
+		"cidade_fornecedor": "Madureira",
+		"endereco_fornecedor": "3016 Lind Island Apt. 008 - Columbus, WY / 24337",
+		"produto_fornecedor": "embalagem"
+	},
+	"erro": false
 }
 
 ```
@@ -974,31 +973,29 @@ Insere um fornecedor no banco de dados.
 Exemplo de body de requisição:
 ```json
 {
-            "nome": " Janaina",
-            "cnpj": "50.540.372/0001-89 ",
-            "email": " thania3026@uorak.com”,
-            "cidade": "Volta Redonda ",
-            "endereço": "Rua Azazes 661 ",
-            "produto": "molhos ",
-        }
-}
+			"nome_fornecedor": "Maria",
+			"cnpj_fornecedor": "53.948.343/0001-49",
+			"email_fornecedor": "josel79@gmail.com",
+			"cidade_fornecedor": "Rio de Janeiro",
+			"endereco_fornecedor": "4243 Desiree Gateway Suite 854 - Concord, VT / 68035",
+			"produto_fornecedor": "papel higiênico"
+		}
 
 ```
 
 Exemplo de resposta:
 ```json
 {
-    "msg": "Fornecedor validado com sucesso",
-    "Fornecedores":
-{
-            "nome": " Janaina",
-            "cnpj": "50.540.372/0001-89 ",
-            "email": " thania3026@uorak.com”,
-            "cidade": "Volta Redonda ",
-            "endereço": "Rua Azazes 661 ",
-            "produto": "molhos ",
-  },
-    "erro": false
+	"msg": " Fornecedor cadastrado com sucesso",
+	"produto": {
+		"nome_fornecedor": "JOANA",
+		"email_fornecedor": "josel79@gmail.com",
+		"cnpj_fornecedor": "53.948.343/0001-49",
+		"cidade_fornecedor": "Rio de Janeiro",
+		"endereco_fornecedor": "4243 Desiree Gateway Suite 854 - Concord, VT / 68035",
+		"produto_fornecedor": "papel higiênico"
+	},
+	"erro": false
 }
 
 ```
@@ -1010,31 +1007,30 @@ Escolha o fornecedor pelo seu id para realizar a atualização do banco de dados
 Exemplo de body de requisição:
 ```json
 {
-            "nome": " Leandro",
-            "cnpj": "66.512.970/0001-84 ",
-            "email": " leandro21@hotmail.com”,
-            "cidade": "Campo grande ",
-            "endereço": "129 Koch Extensions Suite 247 -  Overland Parck, OR / 17251 ",
-            "produto": " bebidas ",
-}
+			"nome_fornecedor": "Maria",
+			"cnpj_fornecedor": "53.948.343/0001-49",
+			"email_fornecedor": "josel79@gmail.com",
+			"cidade_fornecedor": "Rio de Janeiro",
+			"endereco_fornecedor": "4243 Desiree Gateway Suite 854 - Concord, VT / 68035",
+			"produto_fornecedor": "papel higiênico"
+		}
+
 
 ```
 Esquema de Resposta:
 ```json
 {
-    "msg": "Fornecedor 4 validado com sucesso",
-    "Fornecedor":
-{
-            "nome": " Leandro",
-            "cnpj": "66.512.970/0001-84 ",
-            "email": " leandro21@hotmail.com”,
-            "cidade": "Campo grande ",
-            "endereço": "129 Koch Extensions Suite 247 -  Overland Parck, OR / 17251 ",
-            "produto": " bebidas ",
-    },
-    "erro": false
+	"msg": "Fornecedor atualizado",
+	"fornecedor": {
+		"nome_fornecedor": "Carlos",
+		"email_fornecedor": "carlos96@hotmail.com",
+		"cnpj_fornecedor": "69.886.035/0001-76",
+		"cidade_fornecedor": "Nova Iguaçu",
+		"endereco_fornecedor": "224 Pietro Crescent Suite 291 - Folsom, MA / 87559",
+		"produto_fornecedor": "pão brioche"
+	},
+	"erro": false
 }
-
 ```
 
 - **DELETE `http://localhost:2020/fornecedores/id/`**
@@ -1044,8 +1040,8 @@ Escolha o fornecedor pelo seu id para realizar a exclusão do banco de dados.
 Esquema de Resposta:
 ```json
 {
-    "Msg": "Fornecedor valido com sucesso",
-    "erro": false
+	"msg": "Fornecedor 7 deletado com sucesso",
+	"erro": false
 }
 
 ```
