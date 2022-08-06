@@ -1,8 +1,9 @@
 export const validaNome = (nomeFornecedor)=>{
     if(nomeFornecedor){
         if(nomeFornecedor == ""){
-            throw new Errow('O  nome não pode estar vazio')
+            throw new Error('O  nome não pode estar vazio')
         }
+        return nomeFornecedor
     } else {
         throw new Error('Insira um nome')
     }
@@ -25,6 +26,7 @@ export const validaEmail = (emailFornecedor)=>{
         if(!emailFornecedor.includes("@")){
             throw new Error("Email inválido, tente novamente")
         }
+        return emailFornecedor
     }else{
         throw new Error("Insira um email")
     }
@@ -33,27 +35,29 @@ export const validaEmail = (emailFornecedor)=>{
 export const validaCidade = (cidadeFornecedor)=>{
     if(cidadeFornecedor){
         if(cidadeFornecedor == ""){
-            throw new Errow('Cidade não localizada')
+            throw new Error('Cidade não localizada')
         }
+        return cidadeFornecedor
     } else {
         throw new Error('Insira cidade')
     }
 }
 export const validaEndereco = (enderecoFornecedor)=>{
     if(enderecoFornecedor){
-        if(enderecoFornecedor === ""){
-            throw new Errow('O endereço não pode estar vazio')
+        if(enderecoFornecedor == ""){
+            throw new Error('O endereço não pode estar vazio')
         }
+        return enderecoFornecedor
     } else {
         throw new Error('Insira um endereço válido')
     }
-    console.log(enderecoFornecedor)
 }
 export const validaProduto = (produtoFornecedor)=>{
     if(produtoFornecedor){
         if(produtoFornecedor == ""){
-            throw new Errow('O tipo do produto não pode estar vazio')
+            throw new Error('O tipo do produto não pode estar vazio')
         }
+        return produtoFornecedor
     } else {
         throw new Error('Insira um tipo para o produto')
     }

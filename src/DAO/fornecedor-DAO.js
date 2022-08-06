@@ -104,7 +104,7 @@ const daoFornecedores = {
     },
 
     atualizaFornecedor : (id_fornecedor, novoFornecedor)=>{
-        const ATUALIZA_FORNECEDOR = `UPDATE FORNECEDOR
+        const ATUALIZA_FORNECEDOR = `UPDATE FORNECEDORES
         SET nome_fornecedor = ?,
         cnpj_fornecedor = ?,
         email_fornecedor = ?,
