@@ -1,7 +1,5 @@
 import fornecedorModel from "../model/fornecedor-model.js";
-import {
-    criaFornecedor
-} from "../services/validacao-fornecedor.js";
+import {criaFornecedor} from "../services/validacao-fornecedor.js";
 
 const fornecedorController = (app) => {
 
